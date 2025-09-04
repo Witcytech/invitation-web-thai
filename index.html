@@ -153,7 +153,7 @@
                 document.getElementById('last-updated').textContent = `ปรับปรุงล่าสุด ${day} ${month} ${year} เวลา ${hours}:${minutes} น.`;
             };
             const startCountdown = () => {
-                const weddingDate = new Date("Feb 14, 2026 09:09:00").getTime();
+                const weddingDate = new Date("Oct 17, 2025 09:09:00").getTime();
                 const countdownInterval = setInterval(() => {
                     const now = new Date().getTime(); const distance = weddingDate - now;
                     if (distance < 0) {
@@ -185,4 +185,5 @@
         function closeModal() { modal.style.display = "none"; }
     </script>
 </body>
+
 </html>
