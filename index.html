@@ -1,0 +1,188 @@
+<!-- Witcytech -->
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=IBM+Plex+Sans+Thai:wght@300;400;500&family=Maitree:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        :root {
+            --bg-color: #D6E0F0;
+            --text-primary: #2A446B;
+            --text-secondary: #445D89;
+            --accent-primary: #8DABCB;
+            --accent-secondary: #B2BEB5;
+            --white-ish: #F7F9FB;
+        }
+        body { font-family: 'IBM Plex Sans Thai', sans-serif; background-color: var(--bg-color); color: var(--text-secondary); }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-great-vibes { font-family: 'Great Vibes', cursive; }
+        .font-maitree { font-family: 'Maitree', serif; }
+        .hero-bg { background-image: url('image/IMG_0.jpg'); background-size: cover; background-position: center; }
+        .section-title { font-family: 'Maitree', serif; font-weight: 500; color: var(--text-primary); }
+        .btn-primary { background-color: var(--accent-primary); color: white; }
+        .btn-primary:hover { background-color: var(--text-secondary); }
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.5s ease-in-out; }
+        .heart-pulse { animation: pulse 1.5s infinite ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .heart-pulse path { fill: var(--text-primary); }
+        #imageModal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
+        #modalImage { margin: auto; display: block; max-width: 90%; max-height: 85vh; border-radius: 8px; }
+        #closeModal { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        #pcBlockerModal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(20, 30, 40, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+
+        /* === START: โค้ดที่แก้ไข === */
+        /* เพิ่มดอกไม้ตกแต่งพื้นหลังแบบ Static */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            width: 170px;
+            height: 170px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 0; /* อยู่หลังเนื้อหา */
+            pointer-events: none; /* ทำให้คลิกทะลุได้ */
+            opacity: 0.35;
+        }
+
+        /* ดอกไม้บนซ้าย */
+        body::before {
+            background-image: url('image/ดอก1.png'); /* คุณสามารถเปลี่ยนเป็นไฟล์รูปดอกไม้ของคุณ */
+            top: 10px;
+            left: 10px;
+            transform: rotate(-20deg);
+        }
+
+        /* ดอกไม้ล่างขวา */
+        body::after {
+            background-image: url('image/ดอก2.png'); /* คุณสามารถเปลี่ยนเป็นไฟล์รูปดอกไม้ของคุณ */
+            bottom: 10px;
+            right: 10px;
+            transform: rotate(20deg) scaleX(-1); /* หมุนและกลับด้านเพื่อให้ดูแตกต่าง */
+        }
+
+        /* ปรับขนาดดอกไม้บนจอขนาดเล็ก */
+        @media (max-width: 768px) {
+            body::before,
+            body::after {
+                width: 120px;
+                height: 120px;
+            }
+            /* ขยับดอกไม้ด้านล่างขึ้นมาเล็กน้อยเพื่อไม่ให้บังแถบเมนูมือถือ */
+            body::after {
+                bottom: 80px;
+            }
+        }
+        /* === END: โค้ดที่แก้ไข === */
+
+    </style>
+</head>
+<body class="antialiased pb-20 md:pb-0">
+    
+    <!-- ลบ div id="petal-container" ออกไปแล้ว -->
+
+    <div id="pcBlockerModal">
+        <div class="bg-yellow-50 text-center p-8 rounded-lg shadow-2xl max-w-md mx-4 border-4 border-yellow-400"><svg class="w-16 h-16 text-yellow-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><h2 class="text-2xl font-bold text-yellow-800 mb-4 font-maitree">คำเตือน: ไม่รองรับการแสดงผล</h2><p class="text-yellow-700 mb-6">เว็บไซต์นี้ถูกออกแบบมาเพื่อประสบการณ์ที่ดีที่สุดบน **อุปกรณ์เคลื่อนที่** เท่านั้น</p><div class="border-t border-yellow-300 pt-4 mt-4 text-sm text-gray-600"><p>หากมีปัญหาร้ายแรงกรุณาติดต่อสอบถาม Witcytech</p><div class="flex justify-center items-center gap-4 mt-2"><a href="https://www.instagram.com/nyxitao/" aria-label="Instagram" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a><a href="https://github.com/Witcytech" aria-label="GitHub" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div></div>
+        </div>
+    </div>
+
+    <div id="preloader"><svg class="heart-pulse" width="100" height="100" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+    <div id="imageModal" onclick="closeModal()"><span id="closeModal">&times;</span><img id="modalImage" alt="Large view"></div>
+
+    <header class="hero-bg text-white shadow-lg">
+        <div class="flex flex-col items-center justify-center min-h-screen bg-black bg-opacity-40 p-6 text-center"><h1 class="font-great-vibes text-7xl md:text-9xl font-bold">Puen</h1><h2 class="font-playfair text-4xl md:text-5xl my-4">&</h2><h1 class="font-great-vibes text-7xl md:text-9xl font-bold">Ribbin</h1><div class="w-24 h-px bg-white my-8"></div><p class="text-xl md:text-2xl font-light">October 17, 2025</p><div class="w-48 h-px bg-white/50 my-6"></div><p class="text-lg font-light italic">"In every single day of my life… I wish to always have you by my side."</p></div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <section id="on-behalf-of" class="text-center max-w-4xl mx-auto mb-20 animate-on-scroll"><img src="image/ดอกไม้.png" alt="Flower" class="w-24 h-auto mx-auto mb-8"><h2 class="font-playfair text-5xl text-[var(--text-secondary)] mb-10">On Behalf Of</h2><div class="bg-white/80 rounded-2xl shadow-lg p-8 mt-12"><p class="mb-2">นางสาวเพ็ญทิพย์ ขาวสนิท<br>นางสุวิมล ศรมณี<br>มีความยินดีขอเรียนเชิญเพื่อเป็นเกียรติ เนื่องในพิธีมงคลสมรส
+ระหว่าง</p><div class="flex flex-col md:flex-row justify-around items-center text-center mt-6"><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ขวัญชนก แก้วแสง (ริบบิ้น)</p><p class="text-xl font-playfair text-gray-500 mt-1">Kwanchanok Kaewsaeng (Ribbon)</p></div><div class="font-playfair text-4xl my-4 md:my-0 text-[var(--accent-primary)]">&</div><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ร้อยโท สมรภูมิ ศรมณี (ปืน)</p><p class="text-xl font-playfair text-gray-500 mt-1">Lt. Somrapoom Sormanee (Puen)</p></div></div></div></section>
+        
+        <section id="countdown" class="relative text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-8">นับถอยหลังสู่วันสำคัญ</h2><div id="countdown-timer" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-[var(--text-primary)]"><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="days" class="text-5xl font-bold">0</p><p class="text-lg">วัน</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="hours" class="text-5xl font-bold">0</p><p class="text-lg">ชั่วโมง</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="minutes" class="text-5xl font-bold">0</p><p class="text-lg">นาที</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="seconds" class="text-5xl font-bold">0</p><p class="text-lg">วินาที</p></div></div></section>
+
+        <section id="story" class="relative text-center max-w-3xl mx-auto mb-20 animate-on-scroll"><img src="image/ดอก1.png" alt="ดอกไม้ตกแต่ง" class="absolute hidden md:block -top-8 -left-12 w-24 opacity-50"><h2 class="section-title text-4xl md:text-5xl mb-4">เรื่องราวของเรา</h2><div class="w-16 h-px bg-[var(--accent-primary)] mx-auto my-6"></div><p class="text-lg leading-relaxed">ยังไม่มีข้อมูลในฐานระบบ "Text"</p></section>
+
+        <section id="events" class="mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl text-center mb-12">กำหนดการและสถานที่</h2>
+            
+            <div class="max-w-5xl mx-auto bg-white/90 shadow-2xl rounded-2xl p-8 md:p-12"><div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center mb-12"><div class="flex flex-col items-center"><img src="icon/X1.png" alt="ขันหมาก" class="w-16 h-16 mb-2 rounded-full"><p class="text-xl font-semibold text-[var(--text-primary)]">09.09 น.</p><p>พิธีแห่ขันหมาก</p></div><div class="flex flex-col items-center"><img src="icon/X2.png" alt="พิธีสงฆ์" class="w-16 h-16 mb-2 rounded-full"><p class="text-xl font-semibold text-[var(--text-primary)]">10.09 น.</p><p>พิธีสงฆ์</p></div><div class="flex flex-col items-center"><img src="icon/X3.png" alt="รดน้ำสังข์" class="w-16 h-16 mb-2 rounded-full"><p class="text-xl font-semibold text-[var(--text-primary)]">11.09 น.</p><p>พิธีรดน้ำสังข์</p></div><div class="flex flex-col items-center"><img src="icon/X4.png" alt="งานเลี้ยง" class="w-16 h-16 mb-2 rounded-full"><p class="text-xl font-semibold text-[var(--text-primary)]">18.00 น.</p><p>ฉลองมงคลสมรส</p></div></div><div class="text-center border-t border-gray-200 pt-8 my-8"><h3 class="text-3xl font-maitree text-[var(--text-secondary)] mb-4">Dress Code</h3><div class="flex justify-center items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#B2BEB5] border-2 border-white shadow"></div><div class="w-8 h-8 rounded-full bg-[#D6E0F0] border-2 border-white shadow"></div><div class="w-8 h-8 rounded-full bg-[#8DABCB] border-2 border-white shadow"></div><div class="w-8 h-8 rounded-full bg-[#445D89] border-2 border-white shadow"></div><div class="w-8 h-8 rounded-full bg-[#2A446B] border-2 border-white shadow"></div></div><p class="mt-4 text-gray-600">สวมใส่เสื้อผ้าโทนสีเขียว, ฟ้า, กรม, หรือสีเบจ</p></div><div class="text-center border-t border-gray-200 pt-8"><h3 class="text-3xl font-maitree text-[var(--text-secondary)] mb-4">Venue</h3><p class="text-xl font-medium mb-2">ณ ห้องบงกชรัตน์แกรนด์ โรงแรมทวินโลตัส จ.นครศรีธรรมราช</p><p class="max-w-xl mx-auto text-gray-600">เราได้เลือกสรรสถานที่อันงดงามและสะดวกสบายแห่งนี้ เพื่อร่วมเฉลิมฉลองวันอันแสนพิเศษไปกับทุกท่านที่เรารัก</p><div class="rounded-lg overflow-hidden shadow-md my-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17905.528989392376!2d99.9676404140798!3d8.398886494454853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3053014602b1ba17%3A0x2c442d44d12b50f3!2sThe%20Twin%20Lotus%20Hotel!5e1!3m2!1sen!2sth!4v1757000372468!5m2!1sen!2sth" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div><a href="https://maps.app.goo.gl/ZVdDCUUgMugza4BJ8" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full transition-colors" target="_blank">ดูแผนที่</a></div></div></section>
+
+        <section id="gallery" class="text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-12">แกลเลอรีความทรงจำ</h2><div class="grid grid-cols-2 md:grid-cols-5 gap-4"><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G1.jpg" alt="ภาพ 1" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G2.jpg" alt="ภาพ 2" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G3.jpg" alt="ภาพ 3" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G4.jpg" alt="ภาพ 4" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G5.jpg" alt="ภาพ 5" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G6.jpg" alt="ภาพ 6" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G7.jpg" alt="ภาพ 7" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G8.jpg" alt="ภาพ 8" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G9.jpg" alt="ภาพ 9" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G10.jpg" alt="ภาพ 10" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div></div><div class="text-center mt-12 max-w-3xl mx-auto animate-on-scroll"><p class="text-lg italic text-gray-600 font-playfair">"Thank you for being an important part of our story..."</p></div></section>
+
+                        <section id="moments" class="text-center mb-20 animate-on-scroll"><div class="swiper mySwiper max-w-6xl mx-auto"><div class="swiper-wrapper"><div class="swiper-slide"><img src="image/IMG_X1.jpg" alt="ภาพครอบครัว" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X2.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X3.jpg" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X4.jpg" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X5.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X6.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X7.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div></div><div class="swiper-pagination mt-8"></div></div></section>
+
+        <section id="rsvp" class="relative text-center max-w-3xl mx-auto mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-4">ตอบรับคำเชิญ</h2><p class="text-lg leading-relaxed mb-8">ยังไม่มีข้อมูลในฐานระบบ "Text"</p><form class="bg-white p-8 rounded-lg shadow-lg text-left"><div class="mb-4"><label for="name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" required></div><div class="mb-4"><label for="guest-count" class="block font-medium mb-2">จำนวนแขก (รวมคุณด้วย)</label><input type="number" id="guest-count" min="1" value="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" required></div><div class="mb-4"><p class="block font-medium mb-2">ท่านเป็นแขกฝั่ง</p><div class="flex gap-6"><label class="flex items-center"><input type="radio" name="guest-side" value="groom" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าบ่าว</label><label class="flex items-center"><input type="radio" name="guest-side" value="bride" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าสาว</label></div></div><div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว</label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น เพื่อน, ญาติ"></div><button type="submit" class="w-full btn-primary font-bold py-3 rounded-full transition-colors">ยืนยันการเข้าร่วม</button></form></section>
+
+        <section id="gift" class="relative text-center mb-20 animate-on-scroll"><img src="image/ดอก2.png" alt="ดอกไม้ตกแต่ง" class="absolute hidden md:block -bottom-10 -right-12 w-24 opacity-50 transform rotate-12"><h2 class="section-title text-4xl md:text-5xl mb-4">ของขวัญแทนใจ</h2><p class="text-lg leading-relaxed mb-8 max-w-3xl mx-auto">การมาร่วมงานของทุกท่านคือของขวัญที่ดีที่สุด แต่หากท่านประสงค์จะมอบของขวัญแทนใจ สามารถร่วมอวยพรผ่านช่องทางนี้ได้เลย</p><div class="bg-white/90 p-8 rounded-lg shadow-lg max-w-md mx-auto text-center"><h3 class="text-3xl font-maitree text-[var(--text-secondary)] mb-6">Wedding Gift</h3><div class="text-left space-y-2 mb-6"><p><strong>ชื่อบัญชี:</strong> ยังไม่มีข้อมูลในฐานระบบ "Text"</p><p><strong>เลขที่บัญชี:</strong> XXX-X-XXXXX-X</p><p><strong>ธนาคาร:</strong> เอกซ์ (Bank X)</p></div><a href="icon/code.webp" download="icon/code.webp" class="inline-block my-4"><img src="icon/code.webp" alt="QR Code สำหรับโอนเงิน" class="w-48 h-48 mx-auto rounded-lg shadow-md transition-transform hover:scale-105" title="คลิกเพื่อดาวน์โหลด QR Code"></a><p class="text-sm text-gray-500 mt-2">กดที่รูป QR Code เพื่อดาวน์โหลด</p><div class="border-t border-gray-200 mt-6 pt-6"><h4 class="text-xl font-maitree text-[var(--text-secondary)] mb-4">ส่งหลักฐานการโอนเงิน</h4><form class="text-left space-y-4"><label for="sender-name" class="block font-medium text-sm">ชื่อผู้โอน</label><input type="text" id="sender-name" placeholder="กรุณาระบุชื่อ" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200"><label for="slip-upload" class="block font-medium text-sm">อัปโหลดสลิป</label><div><input type="file" id="slip-upload" class="hidden"><label for="slip-upload" class="w-full text-center cursor-pointer bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-md hover:bg-gray-300 transition-colors">เลือกไฟล์</label></div><button type="submit" class="w-full btn-primary font-bold py-2 rounded-full transition-colors mt-2">ส่งหลักฐาน</button></form></div></div></section>
+        
+        <section id="notes" class="relative text-center max-w-3xl mx-auto animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-4">Memorable Notes</h2><p class="text-lg leading-relaxed mb-8">ร่วมแบ่งปันความทรงจำดี ๆ  หรือคำอวยพรถึงคู่บ่าว-สาวได้ที่นี่</p><form class="bg-white p-8 rounded-lg shadow-lg"><div class="mb-6"><label for="note-name" class="block font-medium mb-2">ชื่อของคุณ</label><input type="text" id="note-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น พัสกร หรือ ครอบครัวแก้วแสง"></div><div class="mb-6"><label for="note-message" class="block font-medium mb-2">ข้อความถึงคู่บ่าว-สาว</label><textarea id="note-message" name="note-message" rows="5" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="เขียนข้อความอวยพรที่นี่..."></textarea></div><button type="submit" class="w-full btn-primary font-bold py-3 rounded-full transition-colors">ส่งข้อความ</button></form></section>
+
+    </main>
+    
+    <nav class="fixed bottom-0 left-0 right-0 bg-[var(--accent-primary)] text-white shadow-lg md:hidden z-50"><div class="flex justify-around items-center h-16"><a href="#" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="text-xs">หน้าแรก</span></a><a href="#on-behalf-of" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="text-xs">คำเชิญ</span></a><a href="#events" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">กำหนดการ</span></a><a href="#gallery" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">แกลเลอรี</span></a><a href="#rsvp" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span class="text-xs">RSVP</span></a></div></nav>
+    
+    <footer class="bg-[var(--text-primary)] text-white text-center p-8 mt-16">
+        <div class="max-w-4xl mx-auto"><h3 class="font-great-vibes text-5xl mb-4 text-[var(--accent-primary)]">Thank You</h3><p class="text-gray-300">ขอบคุณที่มาร่วมเป็นส่วนหนึ่งในวันสำคัญของเรา</p><p class="mt-4 text-sm font-playfair">Puen & Ribbin</p>
+            <div class="border-t border-gray-600 mt-8 pt-6"><div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400"><img src="image/creator-profile.jpg" alt="Witcytech Profile" class="w-16 h-16 rounded-full border-2 border-gray-500 object-cover"><div class="text-center sm:text-left"><p class="font-semibold text-base">Witcytech — 2025</p><p id="last-updated" class="text-xs mt-1 text-gray-500"></p><div class="flex justify-center sm:justify-start items-center gap-4 mt-2"><a href="https://www.instagram.com/nyxitao/" aria-label="Instagram" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a><a href="https://github.com/Witcytech" aria-label="GitHub" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div></div></div></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bodyEl = document.body;
+            const htmlEl = document.documentElement;
+            const checkDevice = () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const isDevMode = urlParams.get('dev') === 'true';
+                if (!isDevMode && window.innerWidth >= 1024) {
+                    document.getElementById('pcBlockerModal').style.display = 'flex';
+                    bodyEl.style.overflow = 'hidden'; htmlEl.style.overflow = 'hidden';
+                } else {
+                    document.getElementById('pcBlockerModal').style.display = 'none';
+                    bodyEl.style.overflow = ''; htmlEl.style.overflow = '';
+                }
+            };
+            const setLastUpdated = () => {
+                const now = new Date(); const thaiMonths = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
+                const day = now.getDate(); const month = thaiMonths[now.getMonth()]; const year = now.getFullYear() + 543; const hours = String(now.getHours()).padStart(2, '0'); const minutes = String(now.getMinutes()).padStart(2, '0');
+                document.getElementById('last-updated').textContent = `ปรับปรุงล่าสุด ${day} ${month} ${year} เวลา ${hours}:${minutes} น.`;
+            };
+            const startCountdown = () => {
+                const weddingDate = new Date("Feb 14, 2026 09:09:00").getTime();
+                const countdownInterval = setInterval(() => {
+                    const now = new Date().getTime(); const distance = weddingDate - now;
+                    if (distance < 0) {
+                        clearInterval(countdownInterval);
+                        document.getElementById("countdown-timer").innerHTML = "<div class='col-span-2 md:col-span-4 text-center text-2xl p-6'>ถึงวันสำคัญแล้ว!</div>";
+                        return;
+                    }
+                    document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+                }, 1000);
+            };
+            checkDevice(); window.addEventListener('resize', checkDevice);
+            setLastUpdated(); startCountdown();
+            const preloader = document.getElementById('preloader'); preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 500);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('opacity-100', 'translate-y-0'); entry.target.classList.remove('opacity-0', 'translate-y-10'); observer.unobserve(entry.target); } });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => { el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-1000', 'ease-out'); observer.observe(el); });
+            new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, loop: true, centeredSlides: true, autoplay: { delay: 3500, disableOnInteraction: false }, pagination: { el: ".swiper-pagination", clickable: true } });
+            
+            // --- โค้ดส่วนของ Petal Effect ถูกลบออกไปทั้งหมดแล้ว ---
+
+        });
+
+        const modal = document.getElementById('imageModal'); const modalImg = document.getElementById("modalImage");
+        function openModal(src) { modal.style.display = "flex"; modalImg.src = src; }
+        function closeModal() { modal.style.display = "none"; }
+    </script>
+</body>
+</html>
