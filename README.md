@@ -9,7 +9,7 @@ A simple and elegant wedding website created to celebrate our special day, featu
 - Family gallery with auto-slideshow
 
 ## Live Demo
-[X](X)
+[https://witcytech.github.io/invitation-web-thai/](https://witcytech.github.io/invitation-web-thai/)
 
 ## Tech Stack
 - HTML5 / CSS3 / JavaScript
