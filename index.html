@@ -50,14 +50,14 @@
         <div class="bg-white text-gray-800 text-left p-6 md:p-8 rounded-lg shadow-2xl max-w-lg mx-4">
             <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4 font-maitree">ข้อตกลงและเงื่อนไข</h2>
             <p class="text-sm text-gray-600 mb-4">
-                เว็บไซต์นี้มีการเก็บรวบรวมข้อมูลส่วนบุคคลของท่าน เช่น ชื่อ, นามสกุล, และข้อมูลการเข้าร่วมงาน เพื่อใช้ในการบริหารจัดการงานมงคลสมรสเท่านั้น โดยเป็นไปตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล (PDPA) นอกจากนี้ การใช้งานเว็บไซต์นี้อยู่ภายใต้พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ และสำหรับการส่งของขวัญออนไลน์จะเกี่ยวข้องกับพระราชบัญญัติว่าด้วยการชำระเงินทางอิเล็กทรอนิกส์
+                เว็บไซต์นี้มีการเก็บรวบรวมข้อมูลส่วนบุคคลของท่าน เช่น ชื่อ หรือ ข้อมูลการเข้าร่วมงาน เพื่อใช้ในการบริหารจัดการงานมงคลสมรสเท่านั้น โดยเป็นไปตาม พ.ร.บ. ข้อมูลส่วนบุคคล (PDPA) นอกจากนี้ การใช้งานเว็บไซต์นี้อยู่ภายใต้ พ.ร.บ. คอมพิวเตอร์ และสำหรับการส่งของขวัญออนไลน์จะเกี่ยวข้องกับ พ.ร.บ. การชำระเงินทางอิเล็กทรอนิกส์
             </p>
             <div class="flex items-start mb-6">
                 <input type="checkbox" id="accept-terms-checkbox" class="h-5 w-5 mt-0.5 text-[var(--text-primary)] focus:ring-[var(--text-primary)] border-gray-300 rounded">
                 <label for="accept-terms-checkbox" class="ml-3 text-sm text-gray-700">ข้าพเจ้าได้อ่านและยอมรับในข้อตกลงและเงื่อนไขการใช้งานข้างต้น</label>
             </div>
             <div class="border-t border-gray-200 pt-4">
-                 <p class="block font-medium mb-3">คุณต้องการเปิดเพลงประกอบในเว็บไซต์หรือไม่?</p>
+                 <p class="block font-medium mb-3">ท่านต้องการเปิดเพลงประกอบในเว็บไซต์หรือไม่เพื่อประการณ์ที่ดี?</p>
                  <div class="flex gap-6">
                     <label class="flex items-center cursor-pointer"><input type="radio" name="music-consent" value="yes" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]"> ต้องการ</label>
                     <label class="flex items-center cursor-pointer"><input type="radio" name="music-consent" value="no" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]" checked> ไม่ต้องการ</label>
@@ -268,8 +268,6 @@
                 }
             });
             
-            // REMOVED: Old autoplay logic
-
             const checkDevice = () => {
                 const urlParams = new URLSearchParams(window.location.search);
                 const isDevMode = urlParams.get('dev') === 'true';
@@ -332,4 +330,4 @@
         function closeModal() { modal.style.display = "none"; }
     </script>
 </body>
-</html>```
+</html>
