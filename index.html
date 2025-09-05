@@ -25,8 +25,9 @@
         .font-maitree { font-family: 'Maitree', serif; }
         .hero-bg { background-image: url('image/IMG_W.jpg'); background-size: cover; background-position: center; }
         .section-title { font-family: 'Maitree', serif; font-weight: 500; color: var(--text-primary); }
-        .btn-primary { background-color: var(--accent-primary); color: white; }
-        .btn-primary:hover { background-color: var(--text-secondary); }
+        .btn-primary { background-color: var(--accent-primary); color: white; transition: background-color 0.3s; }
+        .btn-primary:hover:not(:disabled) { background-color: var(--text-secondary); }
+        .btn-primary:disabled { background-color: #a9b8c9; cursor: not-allowed; }
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.5s ease-in-out; }
         .heart-pulse { animation: pulse 1.5s infinite ease-in-out; }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
@@ -39,6 +40,8 @@
         #consentModal { z-index: 2001; }
         .loader { border: 5px solid #f3f3f3; border-radius: 50%; border-top: 5px solid var(--text-primary); width: 50px; height: 50px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .animate-on-scroll { opacity: 0; transform: translateY(2.5rem); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="antialiased pb-20 md:pb-0">
@@ -65,7 +68,7 @@
                     <label class="flex items-center cursor-pointer"><input type="radio" name="music-consent" value="no" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]"> ไม่ต้องการ</label>
                 </div>
             </div>
-            <button id="enter-site-btn" class="w-full btn-primary font-bold py-3 rounded-full transition-colors mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+            <button id="enter-site-btn" class="w-full btn-primary font-bold py-3 rounded-full mt-6" disabled>
                 เข้าสู่เว็บไซต์
             </button>
         </div>
@@ -79,20 +82,18 @@
     <div id="preloader"><svg class="heart-pulse" width="100" height="100" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
     <div id="imageModal" onclick="closeModal()"><span id="closeModal">&times;</span><img id="modalImage" alt="Large view"></div>
 
-<header class="hero-bg text-white shadow-lg">
-    <div class="flex flex-col items-center min-h-screen bg-black bg-opacity-40 p-6 pt-40 text-center">
-    
-        <img src="image/logo.png" alt="Wedding Logo" class="w-32 h-auto mb-8">
-
-        <h1 class="font-playfair text-6xl md:text-8xl font-bold">Ribbin</h1>
-        <h2 class="font-playfair text-4xl md:text-5xl my-4">&</h2>
-        <h1 class="font-playfair text-6xl md:text-8xl font-bold">Puen</h1>
-        <div class="w-24 h-px bg-white my-8"></div>
-        <p class="text-xl md:text-2xl font-light">October 17, 2025</p>
-        <div class="w-48 h-px bg-white/50 my-6"></div>
-        <p class="text-lg font-light italic">"In every single day of my life… I wish to always have you by my side."</p>
-    </div>
-</header>
+    <header class="hero-bg text-white shadow-lg">
+        <div class="flex flex-col items-center min-h-screen bg-black bg-opacity-40 p-6 pt-40 text-center">
+            <img src="image/logo.png" alt="Wedding Logo" class="w-32 h-auto mb-8">
+            <h1 class="font-playfair text-6xl md:text-8xl font-bold">Ribbin</h1>
+            <h2 class="font-playfair text-4xl md:text-5xl my-4">&</h2>
+            <h1 class="font-playfair text-6xl md:text-8xl font-bold">Puen</h1>
+            <div class="w-24 h-px bg-white my-8"></div>
+            <p class="text-xl md:text-2xl font-light">October 17, 2025</p>
+            <div class="w-48 h-px bg-white/50 my-6"></div>
+            <p class="text-lg font-light italic">"In every single day of my life… I wish to always have you by my side."</p>
+        </div>
+    </header>
 
     <main class="container mx-auto px-6 py-16">
         <section id="on-behalf-of" class="text-center max-w-4xl mx-auto mb-20 animate-on-scroll"><img src="image/flower1.png" alt="Flower" class="w-24 h-auto mx-auto mb-8"><h2 class="font-playfair text-5xl text-[var(--text-secondary)] mb-10">On Behalf Of</h2><div class="bg-white/80 rounded-2xl shadow-lg p-8 mt-12"><p class="mb-2">นางสาวเพ็ญทิพย์ ขาวสนิท<br>นางสุวิมล ศรมณี<br>มีความยินดีขอเรียนเชิญเพื่อเป็นเกียรติ เนื่องในพิธีมงคลสมรสระหว่าง</p><div class="flex flex-col md:flex-row justify-around items-center text-center mt-6"><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ขวัญชนก แก้วแสง (ริบบิ้น)</p><p class="text-xl font-playfair text-gray-500 mt-1">Kwanchanok Kaewsaeng (Ribbin)</p></div><div class="font-playfair text-4xl my-4 md:my-0 text-[var(--accent-primary)]">&</div><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ร้อยโท สมรภูมิ ศรมณี (ปืน)</p><p class="text-xl font-playfair text-gray-500 mt-1">Lt. Samorrapoom Sornmanee (Puen)</p></div></div></div></section>
@@ -100,7 +101,6 @@
         <section id="countdown" class="relative text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-8">นับถอยหลังสู่วันสำคัญ</h2><div id="countdown-timer" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-[var(--text-primary)]"><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="days" class="text-5xl font-bold">0</p><p class="text-lg">วัน</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="hours" class="text-5xl font-bold">0</p><p class="text-lg">ชั่วโมง</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="minutes" class="text-5xl font-bold">0</p><p class="text-lg">นาที</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="seconds" class="text-5xl font-bold">0</p><p class="text-lg">วินาที</p></div></div></section>
 
         <section id="events" class="mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl text-center mb-12">กำหนดการและสถานที่</h2>
-            
         <div class="max-w-5xl mx-auto bg-white/90 shadow-2xl rounded-2xl p-8 md:p-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center mb-12">
                 <div class="flex flex-col items-center justify-center p-4"><p class="text-xl font-semibold text-[var(--text-primary)]">09.09 น.</p><p>พิธีแห่ขันหมาก</p></div>
@@ -127,19 +127,19 @@
                 <div class="rounded-lg overflow-hidden shadow-md my-4">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17905.528989392376!2d99.9676404140798!3d8.398886494454853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3053014602b1ba17%3A0x2c442d44d12b50f3!2sThe%20Twin%20Lotus%20Hotel!5e1!3m2!1sen!2sth!4v1757000372468!5m2!1sen!2sth" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <a href="https://maps.app.goo.gl/ZVdDCUUgMugza4BJ8" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full transition-colors" target="_blank">ดูแผนที่</a>
+                <a href="https://maps.app.goo.gl/ZVdDCUUgMugza4BJ8" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full" target="_blank">ดูแผนที่</a>
             </div>
         </div>
         </section>
 
-        <section id="gallery" class="text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-12">Gallery of memories</h2><div class="grid grid-cols-2 md:grid-cols-5 gap-4"><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G1.jpg" alt="ภาพ 1" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G2.jpg" alt="ภาพ 2" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G3.jpg" alt="ภาพ 3" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G4.jpg" alt="ภาพ 4" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G5.jpg" alt="ภาพ 5" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G6.jpg" alt="ภาพ 6" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G7.jpg" alt="ภาพ 7" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G8.jpg" alt="ภาพ 8" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G9.jpg" alt="ภาพ 9" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G10.jpg" alt="ภาพ 10" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div></div><div class="text-center mt-12 max-w-3xl mx-auto animate-on-scroll"><p class="text-lg italic text-gray-600 font-playfair">"Thank you for being an important part of our story..."</p></div></section>
+        <section id="gallery" class="text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-12">Gallery of memories</h2><div class="grid grid-cols-2 md:grid-cols-5 gap-4"><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G1.jpg" alt="ภาพ 1" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G2.jpg" alt="ภาพ 2" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G3.jpg" alt="ภาพ 3" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G4.jpg" alt="ภาพ 4" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G5.jpg" alt="ภาพ 5" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G6.jpg" alt="ภาพ 6" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G7.jpg" alt="ภาพ 7" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G8.jpg" alt="ภาพ 8" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G9.jpg" alt="ภาพ 9" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G10.jpg" alt="ภาพ 10" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div></div><div class="text-center mt-12 max-w-3xl mx-auto"><p class="text-lg italic text-gray-600 font-playfair">"Thank you for being an important part of our story..."</p></div></section>
 
         <section id="moments" class="text-center mb-20 animate-on-scroll"><div class="swiper mySwiper max-w-6xl mx-auto"><div class="swiper-wrapper"><div class="swiper-slide"><img src="image/IMG_X1.jpg" alt="ภาพครอบครัว" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X2.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X3.jpg" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X4.jpg" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X5.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X6.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X7.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div></div><div class="swiper-pagination mt-8"></div></div></section>
 
         <section id="rsvp" class="relative text-center max-w-3xl mx-auto mb-20 animate-on-scroll">
             <h2 class="section-title text-4xl md:text-5xl mb-4">RSVP</h2>
             <p class="text-lg leading-relaxed mb-8">การตอบรับของท่านมีความสำคัญอย่างยิ่งในการช่วยเราเตรียมงานให้พร้อมสำหรับการเฉลิมฉลองอันน่าจดจำนี้</p>
-            <form id="rsvp-form" data-formtype="rsvp" class="bg-white p-8 rounded-lg shadow-lg text-left">
+            <form id="rsvp-form" data-formtype="rsvp" class="bg-white p-8 rounded-lg shadow-lg text-left" novalidate>
                 <div class="mb-6">
                     <p class="block font-medium mb-3">สถานะการเข้าร่วม</p>
                     <div class="flex gap-6">
@@ -149,24 +149,18 @@
                 </div>
                 
                 <div id="rsvp-details">
-                    <div class="mb-4"><label for="name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" ></div>
-                    <div class="mb-4"><label for="guest-count" class="block font-medium mb-2">จำนวนแขก (รวมคุณด้วย)</label><input type="number" id="guest-count" min="1" value="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" ></div>
+                    <div class="mb-4"><label for="name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
+                    <div class="mb-4"><label for="guest-count" class="block font-medium mb-2">จำนวนแขก (รวมคุณด้วย)</label><input type="number" id="guest-count" min="1" value="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required></div>
                     <div class="mb-4"><p class="block font-medium mb-2">ท่านเป็นแขกฝั่ง</p><div class="flex gap-6"><label class="flex items-center"><input type="radio" name="guest-side" value="groom" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าบ่าว</label><label class="flex items-center"><input type="radio" name="guest-side" value="bride" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าสาว</label></div></div>
-                    <div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว</label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น ญาติ"></div>
+                    <div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว</label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น ญาติ, เพื่อนเจ้าบ่าว"></div>
                 </div>
 
                 <div id="not-attending-details" style="display: none;">
-                    <div class="mb-4">
-                        <label for="not-attending-name" class="block font-medium mb-2">ชื่อ - นามสกุล</label>
-                        <input type="text" id="not-attending-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" >
-                    </div>
-                    <div class="mb-6">
-                        <label for="not-attending-reason" class="block font-medium mb-2">เหตุผลที่ไม่สามารถเข้าร่วมงานได้ (ไม่บังคับ)</label>
-                        <textarea id="not-attending-reason" name="not-attending-reason" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="ฝากข้อความถึงคู่บ่าวสาว..."></textarea>
-                    </div>
+                    <div class="mb-4"><label for="not-attending-name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="not-attending-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
+                    <div class="mb-6"><label for="not-attending-reason" class="block font-medium mb-2">ฝากข้อความถึงคู่บ่าวสาว (ไม่บังคับ)</label><textarea id="not-attending-reason" name="not-attending-reason" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="ขออวยพรให้ทั้งคู่มีความสุขมากๆ..."></textarea></div>
                 </div>
 
-                <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full transition-colors mt-2">ยืนยันการเข้าร่วม</button>
+                <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full mt-2">ยืนยันการเข้าร่วม</button>
             </form>
         </section>
 
@@ -177,10 +171,10 @@
                 <div>
                     <h3 class="text-3xl font-maitree text-[var(--text-secondary)] mb-4">Memorable Notes</h3>
                     <p class="text-lg leading-relaxed mb-8">ทุกคำอวยพรและความทรงจำจากท่านมีความหมายกับเรามาก ร่วมกรอกข้อความเพื่อเป็นส่วนหนึ่งในหน้าแรกของบันทึกการเดินทางของเรา</p>
-                    <form id="wishes-form" data-formtype="wishes" class="text-left">
-                        <div class="mb-6"><label for="note-name" class="block font-medium mb-2">ชื่อ</label><input type="text" id="note-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น พัสกร หรือ ครอบครัวแก้วแสง"></div>
-                        <div class="mb-6"><label for="note-message" class="block font-medium mb-2">ข้อความถึงคู่บ่าว-สาว</label><textarea id="note-message" name="note-message" rows="5" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200" placeholder="กรอกข้อความอวยพรที่นี่..."></textarea></div>
-                        <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full transition-colors">ส่งข้อความ</button>
+                    <form id="wishes-form" data-formtype="wishes" class="text-left" novalidate>
+                        <div class="mb-6"><label for="note-name" class="block font-medium mb-2">ชื่อ</label><input type="text" id="note-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น พัสกร หรือ ครอบครัวแก้วแสง" required></div>
+                        <div class="mb-6"><label for="note-message" class="block font-medium mb-2">ข้อความถึงคู่บ่าว-สาว</label><textarea id="note-message" name="note-message" rows="5" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรอกข้อความอวยพรที่นี่..." required></textarea></div>
+                        <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full">ส่งข้อความ</button>
                     </form>
                 </div>
 
@@ -193,29 +187,28 @@
                     
                     <div class="text-center my-4">
                         <img src="image/payment-qr.jpg" alt="QR Code สำหรับโอนเงิน" class="w-50 h-100 mx-auto rounded-lg shadow-md">
-                        <a href="image/payment-qr.jpg" download="Witcytech.jpg" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full transition-colors text-sm">
+                        <a href="image/payment-qr.jpg" download="Wedding-Gift-QR.jpg" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full text-sm">
                             ดาวน์โหลด QR Code
                         </a>
                     </div>
 
                     <div class="border-t border-gray-200 mt-6 pt-6">
                         <h4 class="text-xl font-maitree text-[var(--text-secondary)] mb-4">ส่งหลักฐานการโอนเงิน</h4>
-                        <form id="gift-form" data-formtype="gift" class="text-left space-y-4">
+                        <form id="gift-form" data-formtype="gift" class="text-left space-y-4" novalidate>
                             <div class="space-y-2">
                                 <label for="sender-name" class="block font-medium text-sm">ชื่อผู้โอน</label>
-                                <input type="text" id="sender-name" placeholder="กรุณาระบุชื่อผู้โอน" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200">
+                                <input type="text" id="sender-name" placeholder="กรุณาระบุชื่อผู้โอน" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
                             </div>
 
                             <div class="space-y-2">
                                 <label for="gift-amount" class="block font-medium text-sm">จำนวนเงินที่โอน (บาท)</label>
-                                <input type="number" id="gift-amount" min="0" step="1" placeholder="500" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200">
+                                <input type="number" id="gift-amount" min="1" step="1" placeholder="500" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
                             </div>
 
-                            <!-- MODIFIED: Slip Upload UI -->
                             <div class="space-y-2">
                                 <label class="block font-medium text-sm">อัปโหลดสลิป</label>
                                 <div id="slip-upload-area" class="relative p-4 border-2 border-dashed border-gray-300 rounded-lg text-center cursor-pointer hover:border-[var(--accent-primary)] transition-colors">
-                                    <input type="file" id="slip-upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*">
+                                    <input type="file" id="slip-upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*" required>
                                     <div id="slip-prompt">
                                         <p class="text-gray-500">แตะเพื่อเลือกไฟล์รูปภาพ</p>
                                     </div>
@@ -226,9 +219,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- END MODIFICATION -->
                             
-                            <button type="submit" class="w-full btn-primary font-bold py-2 rounded-full transition-colors pt-2">ส่งหลักฐาน</button>
+                            <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full pt-2">ส่งหลักฐาน</button>
                         </form>
                     </div>
                 </div>
@@ -246,48 +238,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
-    <!-- =================================================================== -->
-    <!-- === Custom Modals === -->
-    <!-- =================================================================== -->
-    <div id="alertModal" class="fixed inset-0 z-[2005] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
+    <!-- === Custom Modals (ปรับปรุง Accessibility) === -->
+    <div id="alertModal" role="dialog" aria-modal="true" aria-labelledby="alertTitle" class="fixed inset-0 z-[2005] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
         <div id="alertModalContent" class="mx-4 flex max-w-md flex-col items-center rounded-lg border-4 bg-white p-8 text-center shadow-2xl">
             <div id="alertIconContainer" class="mb-4"></div>
             <h2 id="alertTitle" class="mb-2 text-2xl font-bold font-maitree"></h2>
             <p id="alertMessage" class="text-gray-700"></p>
-            <button id="alertCloseBtn" class="btn-primary mt-6 w-full rounded-full py-2 font-bold transition-colors">ปิด</button>
+            <button id="alertCloseBtn" class="btn-primary mt-6 w-full rounded-full py-2 font-bold">ปิด</button>
         </div>
     </div>
     
-    <!-- NEW: Universal Confirmation Modal -->
-    <div id="confirmationModal" class="fixed inset-0 z-[2006] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
+    <div id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="confirmationModalTitle" class="fixed inset-0 z-[2006] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
         <div class="mx-4 max-w-md rounded-lg bg-white p-6 text-left shadow-2xl">
-            <h2 class="mb-4 text-xl font-bold text-[var(--text-primary)] font-maitree">โปรดตรวจสอบข้อมูล</h2>
+            <h2 id="confirmationModalTitle" class="mb-4 text-xl font-bold text-[var(--text-primary)] font-maitree">โปรดตรวจสอบข้อมูล</h2>
             <p class="mb-4 text-sm text-gray-600">กรุณาตรวจสอบว่าข้อมูลที่ท่านกรอกถูกต้องหรือไม่?</p>
-            <div id="confirmation-summary" class="mb-6 space-y-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-800">
-                <!-- Summary will be injected here -->
-            </div>
+            <div id="confirmation-summary" class="mb-6 space-y-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-800"></div>
             <div class="flex gap-4">
-                <button id="final-confirm-btn" class="w-full btn-primary rounded-full py-2 font-bold transition-colors">ยืนยันและส่งข้อมูล</button>
-                <button id="final-cancel-btn" class="w-full rounded-full bg-gray-200 py-2 font-bold text-gray-700 transition-colors hover:bg-gray-300">แก้ไข</button>
+                <button id="final-confirm-btn" class="w-full btn-primary rounded-full py-2 font-bold">ยืนยันและส่งข้อมูล</button>
+                <button id="final-cancel-btn" class="w-full rounded-full bg-gray-200 py-2 font-bold text-gray-700 hover:bg-gray-300">แก้ไข</button>
             </div>
         </div>
     </div>
 
-    <div id="loadingModal" class="fixed inset-0 z-[2007] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
+    <div id="loadingModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[2007] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
         <div class="flex flex-col items-center rounded-lg bg-white p-8 shadow-2xl">
             <div class="loader"></div>
             <p class="mt-4 font-medium text-gray-800">กำลังดำเนินการ...</p>
         </div>
     </div>
-    <!-- =================================================================== -->
 
    <script>
     // ===================================================================
-    // === PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE ===
+    // === !! สำคัญ !! วาง URL ของ Google Apps Script Web App ของคุณที่นี่ ===
     // ===================================================================
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyTkBW9eoz9Tu5SzNUI4hyFcnXCWGPHSPFuv0hZ_iD1c9mG2ayAFU4KyfncCyg6cU7s/exec'; // <<< วาง URL ของคุณที่นี่
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzPZi0KDD9lQFNFKTPaMmft0Ea37VuenWNfYXJ9F4bHovbxx2wkAk8ogllhOfJcXcjQ/exec'; 
     // ===================================================================
 
+    // --- GLOBAL VARIABLES & ELEMENT SELECTORS ---
     const alertModal = document.getElementById('alertModal');
     const alertModalContent = document.getElementById('alertModalContent');
     const alertTitle = document.getElementById('alertTitle');
@@ -301,14 +288,17 @@
     const finalCancelBtn = document.getElementById('final-cancel-btn');
 
     const loadingModal = document.getElementById('loadingModal');
-    let pendingFormData = null;
-    let fileToUpload = null;
+    let pendingFormData = null; // Object สำหรับเก็บข้อมูลฟอร์มที่รอการยืนยัน
+    let fileToUpload = null;    // Object สำหรับเก็บไฟล์ที่รอการอัปโหลด
 
     const icons = {
         success: `<svg class="h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
         error: `<svg class="h-16 w-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
     };
 
+    // --- MODAL & UI FUNCTIONS ---
+
+    /** แสดง Modal แจ้งเตือน (Success หรือ Error) */
     function showAlert(type, title, message) {
         alertIconContainer.innerHTML = icons[type];
         alertTitle.textContent = title;
@@ -318,25 +308,29 @@
         alertModal.style.display = 'flex';
     }
 
-    alertCloseBtn.addEventListener('click', () => alertModal.style.display = 'none');
-    
+    /** สลับการแสดงผลฟอร์ม RSVP ระหว่าง 'เข้าร่วม' และ 'ไม่เข้าร่วม' */
     function toggleRsvpDetails(isAttending) {
         document.getElementById('rsvp-details').style.display = isAttending ? 'block' : 'none';
         document.getElementById('not-attending-details').style.display = isAttending ? 'none' : 'block';
         document.querySelector('#rsvp-form button[type="submit"]').textContent = isAttending ? 'ยืนยันการเข้าร่วม' : 'ส่งการตอบรับ';
     }
-    
-    // Step 1: User clicks submit, this function validates and shows confirmation.
+
+    // --- FORM HANDLING ---
+
+    /** Step 1: จัดการเมื่อมีการกด Submit ฟอร์ม, ตรวจสอบข้อมูล และแสดง Modal ยืนยัน */
     async function handleFormSubmit(event) {
         event.preventDefault();
         const form = event.target;
         pendingFormData = { form, data: { formType: form.dataset.formtype } };
         let summaryHtml = '';
+        let isValid = true;
 
         try {
+            // --- RSVP Form Logic ---
             if (pendingFormData.data.formType === 'rsvp') {
                 const attendance = form.querySelector('input[name="attendance"]:checked').value;
                 pendingFormData.data.attendance = attendance;
+
                 if (attendance === 'attending') {
                     const name = document.getElementById('name').value.trim();
                     const guestCount = document.getElementById('guest-count').value;
@@ -353,47 +347,60 @@
                     pendingFormData.data.notAttendingReason = document.getElementById('not-attending-reason').value.trim();
                     summaryHtml = `<p><strong>สถานะ:</strong> ไม่สามารถเข้าร่วมได้</p><p><strong>ชื่อ:</strong> ${name}</p>`;
                 }
-            } else if (pendingFormData.data.formType === 'wishes') {
+            } 
+            // --- Wishes Form Logic ---
+            else if (pendingFormData.data.formType === 'wishes') {
                 const name = document.getElementById('note-name').value.trim();
                 const message = document.getElementById('note-message').value.trim();
                 if (!name || !message) throw new Error('กรุณากรอกชื่อและข้อความอวยพร');
                 pendingFormData.data.noteName = name;
                 pendingFormData.data.noteMessage = message;
-                summaryHtml = `<p><strong>ชื่อผู้ส่ง:</strong> ${name}</p><p><strong>ข้อความ:</strong> ${message.substring(0, 50)}...</p>`;
-            } else if (pendingFormData.data.formType === 'gift') {
+                summaryHtml = `<p><strong>ชื่อผู้ส่ง:</strong> ${name}</p><p><strong>ข้อความ:</strong> ${message.substring(0, 100)}...</p>`;
+            } 
+            // --- Gift Form Logic ---
+            else if (pendingFormData.data.formType === 'gift') {
                 const name = document.getElementById('sender-name').value.trim();
                 const amount = document.getElementById('gift-amount').value;
                 if (!name || !amount || !fileToUpload) throw new Error('กรุณากรอกชื่อผู้โอน, จำนวนเงิน, และแนบสลิป');
-                if (!Number.isInteger(Number(amount))) throw new Error('กรุณากรอกจำนวนเงินเป็นตัวเลขจำนวนเต็มเท่านั้น');
+                if (parseInt(amount) <= 0) throw new Error('กรุณากรอกจำนวนเงินให้ถูกต้อง');
                 pendingFormData.data.senderName = name;
                 pendingFormData.data.amount = amount;
                 pendingFormData.data.fileName = fileToUpload.name;
                 summaryHtml = `<p><strong>ชื่อผู้โอน:</strong> ${name}</p><p><strong>จำนวนเงิน:</strong> ${amount} บาท</p><p><strong>สลิป:</strong> ${fileToUpload.name}</p>`;
             }
 
+            // ถ้าข้อมูลถูกต้องทั้งหมด ให้แสดง Modal ยืนยัน
             confirmationSummary.innerHTML = summaryHtml;
             confirmationModal.style.display = 'flex';
 
         } catch (error) {
-            showAlert('error', 'ข้อมูลไม่สมบูรณ์', `${error.message}`);
+            showAlert('error', 'ข้อมูลไม่สมบูรณ์', error.message);
         }
     }
 
-    // Step 2: User confirms, this function sends the data.
+    /** Step 2: จัดการเมื่อผู้ใช้กดยืนยันใน Modal, ส่งข้อมูลไปยัง Backend */
     async function sendDataToBackend() {
         if (!pendingFormData) return;
+
+        // ปิดการใช้งานปุ่มทันทีเพื่อป้องกันการกดซ้ำ
+        finalConfirmBtn.disabled = true;
+        finalConfirmBtn.textContent = 'กำลังส่ง...';
 
         const { form, data } = pendingFormData;
         confirmationModal.style.display = 'none';
         loadingModal.style.display = 'flex';
 
         try {
+            // ถ้าเป็นฟอร์มของขวัญ ให้แปลงไฟล์เป็น Base64 ก่อนส่ง
             if (data.formType === 'gift' && fileToUpload) {
                 data.file = await toBase64(fileToUpload.file);
             }
 
+            // ส่งข้อมูลไปที่ Google Apps Script
             await fetch(WEB_APP_URL, {
-                method: 'POST', mode: 'no-cors',
+                method: 'POST',
+                mode: 'no-cors', // สำคัญ: Google Apps Script ต้องใช้โหมดนี้
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // ใช้ text/plain เพื่อเลี่ยง CORS preflight
                 body: JSON.stringify(data)
             });
             
@@ -401,43 +408,33 @@
             showAlert('success', 'ส่งข้อมูลสำเร็จ!', 'ขอบคุณสำหรับข้อมูลของท่าน เราได้รับเรียบร้อยแล้ว');
             form.reset();
             
+            // ถ้าเป็นฟอร์มของขวัญ ให้เคลียร์ตัวอย่างสลิปด้วย
             if (data.formType === 'gift') {
                 document.getElementById('remove-slip-btn').click();
             }
         } catch (error) {
             loadingModal.style.display = 'none';
             showAlert('error', 'เกิดข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง');
+            console.error('Fetch error:', error);
         } finally {
-            pendingFormData = null;
+            // คืนค่าปุ่มให้เป็นปกติ ไม่ว่าจะสำเร็จหรือล้มเหลว
+            finalConfirmBtn.disabled = false;
+            finalConfirmBtn.textContent = 'ยืนยันและส่งข้อมูล';
+            pendingFormData = null; // ล้างข้อมูลที่รอการยืนยัน
         }
     }
 
-    finalConfirmBtn.addEventListener('click', sendDataToBackend);
-    finalCancelBtn.addEventListener('click', () => {
-        confirmationModal.style.display = 'none';
-        pendingFormData = null;
-    });
-
+    /** แปลงไฟล์เป็น Base64 string */
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
     });
-
-    async function trackVisit() {
-        try {
-            const response = await fetch('https://ipapi.co/json/');
-            if (!response.ok) return;
-            const data = await response.json();
-            fetch(WEB_APP_URL, {
-                method: 'POST', mode: 'no-cors',
-                body: JSON.stringify({ formType: 'visit', ip: data.ip, country: data.country_name, city: data.city })
-            });
-        } catch (error) { console.error('Could not track visitor:', error); }
-    }
     
+    // --- EVENT LISTENERS & INITIALIZATION ---
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Core Site Setup ---
         const bodyEl = document.body;
         const htmlEl = document.documentElement;
         
@@ -446,8 +443,10 @@
         const acceptCheckbox = document.getElementById('accept-terms-checkbox');
         const enterSiteBtn = document.getElementById('enter-site-btn');
 
+        // แสดง Modal ข้อตกลงก่อนเข้าเว็บ
         consentModal.style.display = 'flex';
-        bodyEl.style.overflow = 'hidden'; htmlEl.style.overflow = 'hidden';
+        bodyEl.style.overflow = 'hidden';
+        htmlEl.style.overflow = 'hidden';
 
         acceptCheckbox.addEventListener('change', () => { enterSiteBtn.disabled = !acceptCheckbox.checked; });
 
@@ -456,12 +455,14 @@
                 music.play().catch(e => console.error("Music play failed:", e));
             }
             consentModal.style.display = 'none';
-            trackVisit();
+            trackVisit(); // ส่งข้อมูลการเข้าชม
             if (document.getElementById('pcBlockerModal').style.display !== 'flex') {
-                bodyEl.style.overflow = ''; htmlEl.style.overflow = '';
+                bodyEl.style.overflow = '';
+                htmlEl.style.overflow = '';
             }
         });
         
+        // --- Device Blocker ---
         const checkDevice = () => {
             const isDevMode = new URLSearchParams(window.location.search).get('dev') === 'true';
             const pcBlocker = document.getElementById('pcBlockerModal');
@@ -475,35 +476,47 @@
             }
         };
         
+        // --- Countdown Timer ---
         const startCountdown = () => {
             const weddingDate = new Date("Oct 17, 2025 09:09:00").getTime();
-            const cd = setInterval(() => {
-                const dist = weddingDate - new Date().getTime();
-                if (dist < 0) {
-                    clearInterval(cd);
+            const timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
                     document.getElementById("countdown-timer").innerHTML = "<div class='col-span-2 md:col-span-4 text-center text-2xl p-6'>ถึงวันสำคัญแล้ว!</div>";
                     return;
                 }
-                document.getElementById("days").innerText = Math.floor(dist / 864e5);
-                document.getElementById("hours").innerText = Math.floor((dist % 864e5) / 36e5);
-                document.getElementById("minutes").innerText = Math.floor((dist % 36e5) / 6e4);
-                document.getElementById("seconds").innerText = Math.floor((dist % 6e4) / 1000);
+                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
             }, 1000);
         };
         
-        checkDevice(); window.addEventListener('resize', checkDevice);
-        startCountdown(); toggleRsvpDetails(true);
-
+        // --- Preloader & Scroll Animation ---
         const preloader = document.getElementById('preloader');
         preloader.style.opacity = '0';
         setTimeout(() => preloader.style.display = 'none', 500);
         
-        const observer = new IntersectionObserver((e) => { e.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('opacity-100','translate-y-0'); entry.target.classList.remove('opacity-0','translate-y-10'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
-        document.querySelectorAll('.animate-on-scroll').forEach(el => { el.classList.add('opacity-0','translate-y-10','transition-all','duration-1000','ease-out'); observer.observe(el); });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
+        // --- Form & Button Event Listeners ---
         document.querySelectorAll('form').forEach(form => form.addEventListener('submit', handleFormSubmit));
+        finalConfirmBtn.addEventListener('click', sendDataToBackend);
+        finalCancelBtn.addEventListener('click', () => { confirmationModal.style.display = 'none'; pendingFormData = null; });
+        alertCloseBtn.addEventListener('click', () => alertModal.style.display = 'none');
         
-        // --- NEW Slip Upload UI Logic ---
+        // --- Slip Upload UI Logic ---
         const slipUploadInput = document.getElementById('slip-upload');
         const slipUploadArea = document.getElementById('slip-upload-area');
         const slipPrompt = document.getElementById('slip-prompt');
@@ -520,7 +533,6 @@
                     slipPreviewImg.src = e.target.result;
                     slipPreviewFilename.textContent = file.name;
                     fileToUpload = { file: file, name: file.name };
-
                     slipPrompt.classList.add('hidden');
                     slipPreviewContainer.classList.remove('hidden');
                     slipUploadArea.classList.add('border-green-500');
@@ -532,19 +544,34 @@
 
         removeSlipBtn.addEventListener('click', () => {
             fileToUpload = null;
-            slipUploadInput.value = ''; // Important to clear the file input
+            slipUploadInput.value = '';
             slipPreviewImg.src = '#';
-
             slipPreviewContainer.classList.add('hidden');
             slipPrompt.classList.remove('hidden');
             slipUploadArea.classList.remove('border-green-500');
             slipUploadArea.classList.add('border-gray-300');
         });
         
-        new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, loop: true, centeredSlides: true, autoplay: { delay: 3500, disableOnInteraction: false }, pagination: { el: ".swiper-pagination", clickable: true } });
+        // --- Swiper Initialization ---
+        new Swiper(".mySwiper", { 
+            slidesPerView: 1, 
+            spaceBetween: 30, 
+            loop: true, 
+            centeredSlides: true, 
+            autoplay: { delay: 3500, disableOnInteraction: false }, 
+            pagination: { el: ".swiper-pagination", clickable: true } 
+        });
+
+        // --- Initial Function Calls ---
+        checkDevice();
+        window.addEventListener('resize', checkDevice);
+        startCountdown();
+        toggleRsvpDetails(true);
     });
 
-    const modal = document.getElementById('imageModal'); const modalImg = document.getElementById("modalImage");
+    // --- Global Helper Functions ---
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById("modalImage");
     function openModal(src) { modal.style.display = "flex"; modalImg.src = src; }
     function closeModal() { modal.style.display = "none"; }
 </script>
