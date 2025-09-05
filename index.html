@@ -182,12 +182,12 @@
                     <div class="mb-4"><label for="name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
                     <div class="mb-4"><label for="guest-count" class="block font-medium mb-2">จำนวนแขก (รวมคุณด้วย)</label><input type="number" id="guest-count" min="1" value="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required></div>
                     <div class="mb-4"><p class="block font-medium mb-2">ท่านเป็นแขกฝั่ง</p><div class="flex gap-6"><label class="flex items-center"><input type="radio" name="guest-side" value="groom" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าบ่าว</label><label class="flex items-center"><input type="radio" name="guest-side" value="bride" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าสาว</label></div></div>
-                    <div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว</label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น ญาติ, เพื่อนเจ้าบ่าว"></div>
+                    <div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว</label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น ญาติ"></div>
                 </div>
 
                 <div id="not-attending-details" style="display: none;">
                     <div class="mb-4"><label for="not-attending-name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="not-attending-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
-                    <div class="mb-6"><label for="not-attending-reason" class="block font-medium mb-2">ฝากข้อความถึงคู่บ่าวสาว (ไม่บังคับ)</label><textarea id="not-attending-reason" name="not-attending-reason" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="ขออวยพรให้ทั้งคู่มีความสุขมากๆ..."></textarea></div>
+                    <div class="mb-6"><label for="not-attending-reason" class="block font-medium mb-2">ฝากข้อความถึงคู่บ่าวสาว (ไม่บังคับ)</label><textarea id="not-attending-reason" name="not-attending-reason" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="ขออวยพรให้ทั้งคู่มีความสุข..."></textarea></div>
                 </div>
 
                 <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full mt-2">ยืนยันการเข้าร่วม</button>
@@ -232,7 +232,7 @@
 
                             <div class="space-y-2">
                                 <label for="gift-amount" class="block font-medium text-sm">จำนวนเงินที่โอน (บาท)</label>
-                                <input type="number" id="gift-amount" min="1" step="1" placeholder="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
+                                <input type="number" id="gift-amount" min="1" step="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
                             </div>
 
                             <div class="space-y-2">
