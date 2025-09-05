@@ -267,14 +267,17 @@
         </div>
     </div>
 
-   <script>
+<script>
     // ===================================================================
     // === !! สำคัญ !! วาง URL ของ Google Apps Script Web App ของคุณที่นี่ ===
     // ===================================================================
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzPZi0KDD9lQFNFKTPaMmft0Ea37VuenWNfYXJ9F4bHovbxx2wkAk8ogllhOfJcXcjQ/exec'; 
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzPZi0KDD9lQFNFKTPaMmft0Ea37VuenWNfYXJ9F4bHovbxx2wkAk8ogllhOfJcXcjQ/exec'; // <--- โปรดใส่ URL ของคุณที่นี่
     // ===================================================================
 
     // --- GLOBAL VARIABLES & ELEMENT SELECTORS ---
+    const bodyEl = document.body;
+    const htmlEl = document.documentElement;
+
     const alertModal = document.getElementById('alertModal');
     const alertModalContent = document.getElementById('alertModalContent');
     const alertTitle = document.getElementById('alertTitle');
@@ -288,8 +291,11 @@
     const finalCancelBtn = document.getElementById('final-cancel-btn');
 
     const loadingModal = document.getElementById('loadingModal');
-    let pendingFormData = null; // Object สำหรับเก็บข้อมูลฟอร์มที่รอการยืนยัน
-    let fileToUpload = null;    // Object สำหรับเก็บไฟล์ที่รอการอัปโหลด
+    const consentModal = document.getElementById('consentModal');
+    const pcBlockerModal = document.getElementById('pcBlockerModal');
+    
+    let pendingFormData = null; 
+    let fileToUpload = null;    
 
     const icons = {
         success: `<svg class="h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
@@ -297,8 +303,18 @@
     };
 
     // --- MODAL & UI FUNCTIONS ---
+    function updateScrollLock() {
+        const isScrollLocked = (consentModal.style.display === 'flex') || (pcBlockerModal.style.display === 'flex');
+        
+        if (isScrollLocked) {
+            bodyEl.style.overflow = 'hidden';
+            htmlEl.style.overflow = 'hidden';
+        } else {
+            bodyEl.style.overflow = '';
+            htmlEl.style.overflow = '';
+        }
+    }
 
-    /** แสดง Modal แจ้งเตือน (Success หรือ Error) */
     function showAlert(type, title, message) {
         alertIconContainer.innerHTML = icons[type];
         alertTitle.textContent = title;
@@ -308,25 +324,60 @@
         alertModal.style.display = 'flex';
     }
 
-    /** สลับการแสดงผลฟอร์ม RSVP ระหว่าง 'เข้าร่วม' และ 'ไม่เข้าร่วม' */
     function toggleRsvpDetails(isAttending) {
-        document.getElementById('rsvp-details').style.display = isAttending ? 'block' : 'none';
-        document.getElementById('not-attending-details').style.display = isAttending ? 'none' : 'block';
+        const rsvpDetails = document.getElementById('rsvp-details');
+        const notAttendingDetails = document.getElementById('not-attending-details');
+        
+        const rsvpInputs = rsvpDetails.querySelectorAll('input, textarea');
+        const notAttendingInputs = notAttendingDetails.querySelectorAll('input, textarea');
+
+        if (isAttending) {
+            rsvpDetails.style.display = 'block';
+            notAttendingDetails.style.display = 'none';
+            
+            rsvpInputs.forEach(input => {
+                input.disabled = false;
+                if (input.type !== 'radio' || input.name === 'guest-side') {
+                    input.required = true;
+                }
+            });
+            notAttendingInputs.forEach(input => {
+                input.disabled = true;
+                input.required = false;
+            });
+        } else {
+            rsvpDetails.style.display = 'none';
+            notAttendingDetails.style.display = 'block';
+
+            rsvpInputs.forEach(input => {
+                input.disabled = true;
+                input.required = false;
+            });
+            notAttendingInputs.forEach(input => {
+                input.disabled = false;
+                 if (input.id === 'not-attending-name') {
+                    input.required = true;
+                }
+            });
+        }
         document.querySelector('#rsvp-form button[type="submit"]').textContent = isAttending ? 'ยืนยันการเข้าร่วม' : 'ส่งการตอบรับ';
     }
 
-    // --- FORM HANDLING ---
 
-    /** Step 1: จัดการเมื่อมีการกด Submit ฟอร์ม, ตรวจสอบข้อมูล และแสดง Modal ยืนยัน */
-    async function handleFormSubmit(event) {
+    // --- FORM HANDLING ---
+    function handleFormSubmit(event) {
         event.preventDefault();
         const form = event.target;
+
+        if (!form.checkValidity()) {
+            showAlert('error', 'ข้อมูลไม่สมบูรณ์', 'กรุณากรอกข้อมูลในช่องที่จำเป็นให้ครบถ้วนด้วยค่ะ');
+            return;
+        }
+
         pendingFormData = { form, data: { formType: form.dataset.formtype } };
         let summaryHtml = '';
-        let isValid = true;
 
         try {
-            // --- RSVP Form Logic ---
             if (pendingFormData.data.formType === 'rsvp') {
                 const attendance = form.querySelector('input[name="attendance"]:checked').value;
                 pendingFormData.data.attendance = attendance;
@@ -334,42 +385,41 @@
                 if (attendance === 'attending') {
                     const name = document.getElementById('name').value.trim();
                     const guestCount = document.getElementById('guest-count').value;
-                    if (!name || !guestCount) throw new Error('กรุณากรอกชื่อ-นามสกุล และจำนวนแขก');
-                    pendingFormData.data.name = name;
-                    pendingFormData.data.guestCount = guestCount;
-                    pendingFormData.data.guestSide = form.querySelector('input[name="guest-side"]:checked')?.value || 'ไม่ได้ระบุ';
-                    pendingFormData.data.relationship = document.getElementById('relationship').value.trim();
-                    summaryHtml = `<p><strong>สถานะ:</strong> เข้าร่วมงาน</p><p><strong>ชื่อ:</strong> ${name}</p><p><strong>จำนวนแขก:</strong> ${guestCount}</p>`;
+                    const guestSide = form.querySelector('input[name="guest-side"]:checked').value;
+                    const relationship = document.getElementById('relationship').value.trim();
+
+                    pendingFormData.data = { ...pendingFormData.data, name, guestCount, guestSide, relationship };
+                    summaryHtml = `<p><strong>สถานะ:</strong> เข้าร่วมงาน</p>
+                                   <p><strong>ชื่อ:</strong> ${name}</p>
+                                   <p><strong>จำนวนแขก:</strong> ${guestCount}</p>
+                                   <p><strong>แขกฝั่ง:</strong> ${guestSide === 'bride' ? 'เจ้าสาว' : 'เจ้าบ่าว'}</p>
+                                   <p><strong>ความสัมพันธ์:</strong> ${relationship}</p>`;
                 } else {
                     const name = document.getElementById('not-attending-name').value.trim();
-                    if (!name) throw new Error('กรุณากรอกชื่อ-นามสกุลของท่าน');
+                    const reason = document.getElementById('not-attending-reason').value.trim();
                     pendingFormData.data.notAttendingName = name;
-                    pendingFormData.data.notAttendingReason = document.getElementById('not-attending-reason').value.trim();
+                    pendingFormData.data.notAttendingReason = reason;
                     summaryHtml = `<p><strong>สถานะ:</strong> ไม่สามารถเข้าร่วมได้</p><p><strong>ชื่อ:</strong> ${name}</p>`;
                 }
             } 
-            // --- Wishes Form Logic ---
             else if (pendingFormData.data.formType === 'wishes') {
                 const name = document.getElementById('note-name').value.trim();
                 const message = document.getElementById('note-message').value.trim();
-                if (!name || !message) throw new Error('กรุณากรอกชื่อและข้อความอวยพร');
                 pendingFormData.data.noteName = name;
                 pendingFormData.data.noteMessage = message;
                 summaryHtml = `<p><strong>ชื่อผู้ส่ง:</strong> ${name}</p><p><strong>ข้อความ:</strong> ${message.substring(0, 100)}...</p>`;
             } 
-            // --- Gift Form Logic ---
             else if (pendingFormData.data.formType === 'gift') {
                 const name = document.getElementById('sender-name').value.trim();
                 const amount = document.getElementById('gift-amount').value;
-                if (!name || !amount || !fileToUpload) throw new Error('กรุณากรอกชื่อผู้โอน, จำนวนเงิน, และแนบสลิป');
-                if (parseInt(amount) <= 0) throw new Error('กรุณากรอกจำนวนเงินให้ถูกต้อง');
+                if (!fileToUpload) throw new Error('กรุณาแนบสลิปการโอนเงิน');
+                
                 pendingFormData.data.senderName = name;
                 pendingFormData.data.amount = amount;
                 pendingFormData.data.fileName = fileToUpload.name;
                 summaryHtml = `<p><strong>ชื่อผู้โอน:</strong> ${name}</p><p><strong>จำนวนเงิน:</strong> ${amount} บาท</p><p><strong>สลิป:</strong> ${fileToUpload.name}</p>`;
             }
 
-            // ถ้าข้อมูลถูกต้องทั้งหมด ให้แสดง Modal ยืนยัน
             confirmationSummary.innerHTML = summaryHtml;
             confirmationModal.style.display = 'flex';
 
@@ -377,30 +427,36 @@
             showAlert('error', 'ข้อมูลไม่สมบูรณ์', error.message);
         }
     }
-
-    /** Step 2: จัดการเมื่อผู้ใช้กดยืนยันใน Modal, ส่งข้อมูลไปยัง Backend */
+    
     async function sendDataToBackend() {
         if (!pendingFormData) return;
+        
+        confirmationModal.style.display = 'none';
+        
+        // ตรวจสอบ URL หลังจากปิด Modal ไปแล้ว
+        if (!WEB_APP_URL || WEB_APP_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+            showAlert('error', 'การตั้งค่าไม่สมบูรณ์', 'กรุณาตั้งค่า WEB_APP_URL ในไฟล์ HTML ก่อนใช้งานฟอร์ม');
+            return;
+        }
 
-        // ปิดการใช้งานปุ่มทันทีเพื่อป้องกันการกดซ้ำ
+        // แสดง Modal กำลังโหลด
+        loadingModal.style.display = 'flex';
+
         finalConfirmBtn.disabled = true;
         finalConfirmBtn.textContent = 'กำลังส่ง...';
 
         const { form, data } = pendingFormData;
-        confirmationModal.style.display = 'none';
-        loadingModal.style.display = 'flex';
-
+        
         try {
-            // ถ้าเป็นฟอร์มของขวัญ ให้แปลงไฟล์เป็น Base64 ก่อนส่ง
             if (data.formType === 'gift' && fileToUpload) {
                 data.file = await toBase64(fileToUpload.file);
+                data.mimeType = fileToUpload.file.type;
             }
-
-            // ส่งข้อมูลไปที่ Google Apps Script
+            
             await fetch(WEB_APP_URL, {
                 method: 'POST',
-                mode: 'no-cors', // สำคัญ: Google Apps Script ต้องใช้โหมดนี้
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // ใช้ text/plain เพื่อเลี่ยง CORS preflight
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(data)
             });
             
@@ -408,45 +464,38 @@
             showAlert('success', 'ส่งข้อมูลสำเร็จ!', 'ขอบคุณสำหรับข้อมูลของท่าน เราได้รับเรียบร้อยแล้ว');
             form.reset();
             
-            // ถ้าเป็นฟอร์มของขวัญ ให้เคลียร์ตัวอย่างสลิปด้วย
+            if (data.formType === 'rsvp') {
+                toggleRsvpDetails(true);
+            }
             if (data.formType === 'gift') {
                 document.getElementById('remove-slip-btn').click();
             }
         } catch (error) {
             loadingModal.style.display = 'none';
-            showAlert('error', 'เกิดข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง');
+            showAlert('error', 'เกิดข้อผิดพลาด', 'ไม่สามารถส่งข้อมูลได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่อีกครั้ง');
             console.error('Fetch error:', error);
         } finally {
-            // คืนค่าปุ่มให้เป็นปกติ ไม่ว่าจะสำเร็จหรือล้มเหลว
             finalConfirmBtn.disabled = false;
             finalConfirmBtn.textContent = 'ยืนยันและส่งข้อมูล';
-            pendingFormData = null; // ล้างข้อมูลที่รอการยืนยัน
+            pendingFormData = null;
         }
     }
 
-    /** แปลงไฟล์เป็น Base64 string */
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
+        reader.onload = () => resolve(reader.result.split(',')[1]);
         reader.onerror = error => reject(error);
     });
     
     // --- EVENT LISTENERS & INITIALIZATION ---
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Core Site Setup ---
-        const bodyEl = document.body;
-        const htmlEl = document.documentElement;
-        
         const music = document.getElementById('wedding-music');
-        const consentModal = document.getElementById('consentModal');
         const acceptCheckbox = document.getElementById('accept-terms-checkbox');
         const enterSiteBtn = document.getElementById('enter-site-btn');
 
-        // แสดง Modal ข้อตกลงก่อนเข้าเว็บ
         consentModal.style.display = 'flex';
-        bodyEl.style.overflow = 'hidden';
-        htmlEl.style.overflow = 'hidden';
+        updateScrollLock(); 
 
         acceptCheckbox.addEventListener('change', () => { enterSiteBtn.disabled = !acceptCheckbox.checked; });
 
@@ -455,28 +504,19 @@
                 music.play().catch(e => console.error("Music play failed:", e));
             }
             consentModal.style.display = 'none';
-            trackVisit(); // ส่งข้อมูลการเข้าชม
-            if (document.getElementById('pcBlockerModal').style.display !== 'flex') {
-                bodyEl.style.overflow = '';
-                htmlEl.style.overflow = '';
-            }
+            updateScrollLock(); 
         });
         
-        // --- Device Blocker ---
         const checkDevice = () => {
             const isDevMode = new URLSearchParams(window.location.search).get('dev') === 'true';
-            const pcBlocker = document.getElementById('pcBlockerModal');
-            const isConsentActive = consentModal.style.display === 'flex';
             if (!isDevMode && window.innerWidth >= 1024) {
-                pcBlocker.style.display = 'flex';
-                if (!isConsentActive) { bodyEl.style.overflow = 'hidden'; htmlEl.style.overflow = 'hidden'; }
+                pcBlockerModal.style.display = 'flex';
             } else {
-                pcBlocker.style.display = 'none';
-                if (!isConsentActive) { bodyEl.style.overflow = ''; htmlEl.style.overflow = ''; }
+                pcBlockerModal.style.display = 'none';
             }
+            updateScrollLock();
         };
         
-        // --- Countdown Timer ---
         const startCountdown = () => {
             const weddingDate = new Date("Oct 17, 2025 09:09:00").getTime();
             const timerInterval = setInterval(() => {
@@ -495,7 +535,6 @@
             }, 1000);
         };
         
-        // --- Preloader & Scroll Animation ---
         const preloader = document.getElementById('preloader');
         preloader.style.opacity = '0';
         setTimeout(() => preloader.style.display = 'none', 500);
@@ -510,13 +549,11 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // --- Form & Button Event Listeners ---
         document.querySelectorAll('form').forEach(form => form.addEventListener('submit', handleFormSubmit));
         finalConfirmBtn.addEventListener('click', sendDataToBackend);
         finalCancelBtn.addEventListener('click', () => { confirmationModal.style.display = 'none'; pendingFormData = null; });
         alertCloseBtn.addEventListener('click', () => alertModal.style.display = 'none');
         
-        // --- Slip Upload UI Logic ---
         const slipUploadInput = document.getElementById('slip-upload');
         const slipUploadArea = document.getElementById('slip-upload-area');
         const slipPrompt = document.getElementById('slip-prompt');
@@ -528,6 +565,11 @@
         slipUploadInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
+                if(file.size > 5 * 1024 * 1024) { 
+                    showAlert('error', 'ไฟล์ใหญ่เกินไป', 'กรุณาเลือกไฟล์รูปภาพที่มีขนาดไม่เกิน 5MB');
+                    slipUploadInput.value = '';
+                    return;
+                }
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     slipPreviewImg.src = e.target.result;
@@ -552,7 +594,6 @@
             slipUploadArea.classList.add('border-gray-300');
         });
         
-        // --- Swiper Initialization ---
         new Swiper(".mySwiper", { 
             slidesPerView: 1, 
             spaceBetween: 30, 
@@ -562,18 +603,16 @@
             pagination: { el: ".swiper-pagination", clickable: true } 
         });
 
-        // --- Initial Function Calls ---
         checkDevice();
         window.addEventListener('resize', checkDevice);
         startCountdown();
-        toggleRsvpDetails(true);
+        toggleRsvpDetails(true); 
     });
 
-    // --- Global Helper Functions ---
-    const modal = document.getElementById('imageModal');
+    const imageModal = document.getElementById('imageModal');
     const modalImg = document.getElementById("modalImage");
-    function openModal(src) { modal.style.display = "flex"; modalImg.src = src; }
-    function closeModal() { modal.style.display = "none"; }
+    function openModal(src) { imageModal.style.display = "flex"; modalImg.src = src; }
+    function closeModal() { imageModal.style.display = "none"; }
 </script>
 
 </body>
