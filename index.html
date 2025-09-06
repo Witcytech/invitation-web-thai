@@ -131,10 +131,10 @@
                     </div>
                     <!-- Event 4 -->
                     <div class="flex flex-col items-center">
-                        <img src="image/icon4-final.png" alt="ไอคอนอาฟเตอร์ปาร์ตี้" class="w-12.5 h-12.5 mb-2">
+                        <img src="image/icon4-final.png" alt="ไอคอน After Party" class="w-12.5 h-12.5 mb-2">
                         <div class="flex flex-col justify-center flex-grow">
                             <p class="text-xl font-semibold text-[var(--text-primary)]">22.00 น.</p>
-                            <p>อาฟเตอร์ปาร์ตี้</p>
+                            <p>After Party</p>
                         </div>
                     </div>
                 </div>
@@ -240,12 +240,12 @@
                                 <div id="slip-upload-area" class="relative p-4 border-2 border-dashed border-gray-300 rounded-lg text-center cursor-pointer hover:border-[var(--accent-primary)] transition-colors">
                                     <input type="file" id="slip-upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*" required>
                                     <div id="slip-prompt">
-                                        <p class="text-gray-500">แตะเพื่อเลือกไฟล์รูปภาพ</p>
+                                        <p class="text-gray-500">แตะเพื่ออัปโหลดไฟล์</p>
                                     </div>
                                     <div id="slip-preview-container" class="hidden">
                                         <img id="slip-preview-img" src="#" alt="ตัวอย่างสลิป" class="max-h-40 mx-auto rounded-md mb-2">
                                         <p id="slip-preview-filename" class="text-sm text-gray-700 truncate"></p>
-                                        <button type="button" id="remove-slip-btn" class="mt-2 text-xs text-red-600 hover:underline">เปลี่ยนรูปภาพ</button>
+                                        <button type="button" id="remove-slip-btn" class="mt-2 text-xs text-red-600 hover:underline">เปลี่ยนไฟล์</button>
                                     </div>
                                 </div>
                             </div>
@@ -425,7 +425,7 @@
         event.preventDefault();
         const form = event.target;
         if (!form.checkValidity()) {
-            showAlert('error', 'ข้อมูลไม่สมบูรณ์', 'กรุณากรอกข้อมูลในช่องที่จำเป็นให้ครบถ้วนด้วยค่ะ');
+            showAlert('error', 'เกิดข้อผิดพลาด', 'กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง');
             return;
         }
         pendingFormData = { form, data: { formType: form.dataset.formtype } };
@@ -462,7 +462,7 @@
             confirmationSummary.innerHTML = summaryHtml;
             confirmationModal.style.display = 'flex';
         } catch (error) {
-            showAlert('error', 'ข้อมูลไม่สมบูรณ์', error.message);
+            showAlert('error', 'เกิดข้อผิดพลาด', error.message);
         }
     }
 
@@ -470,7 +470,7 @@
         if (!pendingFormData) return;
         confirmationModal.style.display = 'none';
         if (!WEB_APP_URL || WEB_APP_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
-            showAlert('error', 'การตั้งค่าไม่สมบูรณ์', 'กรุณาตั้งค่า WEB_APP_URL ในไฟล์ HTML ก่อนใช้งานฟอร์ม');
+            showAlert('error', 'เกิดข้อผิดพลาด', 'กรุณาตั้งค่า WEB_APP_URL ในไฟล์ HTML ก่อนใช้งานฟอร์ม');
             return;
         }
         loadingModal.style.display = 'flex';
@@ -489,7 +489,7 @@
                 body: JSON.stringify(data)
             });
             loadingModal.style.display = 'none';
-            showAlert('success', 'ส่งข้อมูลสำเร็จ!', 'ขอบคุณสำหรับข้อมูลของท่าน เราได้รับเรียบร้อยแล้ว');
+            showAlert('success', 'ส่งข้อมูลสำเร็จ', 'ขอบคุณสำหรับข้อมูลของท่าน เราได้รับและบันทึกในระบบเรียบร้อยแล้ว');
             form.reset();
             if (data.formType === 'rsvp') {
                 toggleRsvpDetails(true);
@@ -583,7 +583,7 @@
             const file = event.target.files[0];
             if (file) {
                 if(file.size > 26214400) { // 25MB
-                    showAlert('error', 'ไฟล์ใหญ่เกินไป', 'กรุณาเลือกไฟล์รูปภาพที่มีขนาดไม่เกิน 25MB');
+                    showAlert('error', 'ไฟล์ใหญ่เกินไป', 'กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 25MB');
                     slipUploadInput.value = '';
                     return;
                 }
