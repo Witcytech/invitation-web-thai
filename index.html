@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ribbin & Puen Wedding</title>
-    <meta property="og:title" content="งานแต่งงานริบบิ้นและปืน" />
+    <meta property="og:title" content="งานแต่งริบบิ้นและปืน" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://witcytech.github.io/invitation-web-thai" />
     <meta property="og:image" content="https://witcytech.github.io/invitation-web-thai/image/logo.png" />
@@ -43,13 +43,15 @@
         #imageModal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
         #modalImage { margin: auto; display: block; max-width: 90%; max-height: 85vh; border-radius: 8px; }
         #closeModal { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
-        #pcBlockerModal, #consentModal { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(20, 30, 40, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); justify-content: center; align-items: center; }
-        #pcBlockerModal { z-index: 2000; }
-        #consentModal { z-index: 2001; }
+        #consentModal { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(20, 30, 40, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 2001; }
         .loader { border: 5px solid #f3f3f3; border-radius: 50%; border-top: 5px solid var(--text-primary); width: 50px; height: 50px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .animate-on-scroll { opacity: 0; transform: translateY(2.5rem); transition: opacity 1s ease-out, transform 1s ease-out; }
         .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+        
+        @media (min-width: 1024px) {
+            .hero-bg { background-image: url('image/IMG_E.jpg'); }
+        }
     </style>
 </head>
 <body class="antialiased pb-20 md:pb-0">
@@ -62,14 +64,30 @@
         <div class="bg-white text-gray-800 text-left p-6 md:p-8 rounded-lg shadow-2xl max-w-lg mx-4">
             <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4 font-maitree">ข้อตกลงและเงื่อนไข</h2>
             <p class="text-sm text-gray-600 mb-4">
-                เว็บไซต์นี้มีการเก็บรวบรวมข้อมูลส่วนบุคคลของท่าน เช่น ชื่อ หรือ ข้อมูลการเข้าร่วมงาน เพื่อใช้ในการบริหารจัดการงานมงคลสมรสเท่านั้น โดยเป็นไปตาม พ.ร.บ. ข้อมูลส่วนบุคคล (PDPA) นอกจากนี้การใช้งานเว็บไซต์นี้อยู่ภายใต้ พ.ร.บ. คอมพิวเตอร์ และสำหรับการส่งของขวัญออนไลน์จะเกี่ยวข้องกับ พ.ร.บ. ธุรกรรมทางอิเล็กทรอนิกส์
+                เว็บไซต์นี้เก็บรวบรวมข้อมูลส่วนบุคคลของท่าน เพื่อใช้ในการบริหารจัดการงานมงคลสมรสเท่านั้น โดยปฏิบัติตาม พ.ร.บ. ข้อมูลส่วนบุคคล (PDPA)
             </p>
-            <div class="flex items-start mb-6">
+            <p class="text-sm text-gray-600 mb-4">
+                การใช้งานเว็บไซต์ การส่งคำอวยพร และการส่งของขวัญออนไลน์ ถือว่าท่านยอมรับข้อตกลงและเงื่อนไขตาม พ.ร.บ. คอมพิวเตอร์ และ พ.ร.บ. ธุรกรรมทางอิเล็กทรอนิกส์
+            </p>
+            <div class="border-t border-gray-200 pt-4 mt-4 text-sm text-gray-600">
+                <p class="text-center mb-3">หากพบปัญหาการใช้งานหรือมีข้อสงสัย กรุณาติดต่อผู้พัฒนา</p>
+                <div class="flex items-center justify-center gap-4">
+                    <img src="image/creator-profile.jpg" alt="Developer Profile Picture" class="w-12 h-12 rounded-full border-2 border-gray-300 object-cover">
+                    <div class="text-left">
+                        <p class="font-semibold text-gray-800">Witcytech</p>
+                        <div class="flex items-center gap-3 mt-1">
+                            <a href="https://www.instagram.com/nyxitao/" aria-label="Developer's Instagram Profile" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a>
+                            <a href="https://github.com/Witcytech" aria-label="Developer's GitHub Profile" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-start my-6">
                 <input type="checkbox" id="accept-terms-checkbox" class="h-5 w-5 mt-0.5 text-[var(--text-primary)] focus:ring-[var(--text-primary)] border-gray-300 rounded">
                 <label for="accept-terms-checkbox" class="ml-3 text-sm text-gray-700">ข้าพเจ้าได้อ่านและยอมรับในข้อตกลงและเงื่อนไขการใช้งานข้างต้น</label>
             </div>
             <div class="border-t border-gray-200 pt-4">
-                 <p class="block font-medium mb-3">ท่านต้องการเปิดเพลงประกอบในเว็บไซต์หรือไม่เพื่อประการณ์ที่ดี?</p>
+                 <p class="block font-medium mb-3">ท่านต้องการเปิดเพลงประกอบในเว็บไซต์หรือไม่?</p>
                  <div class="flex gap-6">
                     <label class="flex items-center cursor-pointer"><input type="radio" name="music-consent" value="yes" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]" checked> ต้องการ</label>
                     <label class="flex items-center cursor-pointer"><input type="radio" name="music-consent" value="no" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]"> ไม่ต้องการ</label>
@@ -80,18 +98,13 @@
             </button>
         </div>
     </div>
-    
-    <div id="pcBlockerModal">
-        <div class="bg-yellow-50 text-center p-8 rounded-lg shadow-2xl max-w-md mx-4 border-4 border-yellow-400"><svg class="w-16 h-16 text-yellow-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><h2 class="text-2xl font-bold text-yellow-800 mb-4 font-maitree">คำเตือน: ไม่รองรับการแสดงผล</h2><p class="text-yellow-700 mb-6">เว็บไซต์นี้ถูกออกแบบมาเพื่อประสบการณ์ที่ดีที่สุดบน<b>อุปกรณ์เคลื่อนที่</b>เท่านั้น</p><div class="border-t border-yellow-300 pt-4 mt-4 text-sm text-gray-600"><p>หากมีปัญหาร้ายแรงกรุณาติดต่อสอบถาม Witcytech</p><div class="flex justify-center items-center gap-4 mt-2"><a href="https://www.instagram.com/nyxitao/" aria-label="Instagram ของผู้พัฒนา" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a><a href="https://github.com/Witcytech" aria-label="GitHub ของผู้พัฒนา" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div></div>
-        </div>
-    </div>
 
     <div id="preloader"><svg class="heart-pulse" width="100" height="100" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
-    <div id="imageModal" onclick="closeModal()"><span id="closeModal">&times;</span><img id="modalImage" alt="Large view"></div>
+    <div id="imageModal" onclick="closeModal()"><span id="closeModal">&times;</span><img id="modalImage" alt="Enlarged gallery image"></div>
 
     <header class="hero-bg text-white shadow-lg">
-        <div class="flex flex-col items-center min-h-screen bg-black bg-opacity-40 p-6 pt-40 text-center">
-            <img src="image/logo.png" alt="Wedding Logo" class="w-32 h-auto mb-8">
+        <div class="flex flex-col items-center justify-center min-h-screen bg-black bg-opacity-40 p-6 text-center">
+            <img src="image/logo.png" alt="Ribbin and Puen Wedding Logo" class="w-32 h-auto mb-8">
             <h1 class="font-playfair text-6xl md:text-8xl font-bold">Ribbin</h1>
             <h2 class="font-playfair text-4xl md:text-5xl my-4">&</h2>
             <h1 class="font-playfair text-6xl md:text-8xl font-bold">Puen</h1>
@@ -103,7 +116,7 @@
     </header>
 
     <main class="container mx-auto px-6 py-16">
-        <section id="on-behalf-of" class="text-center max-w-4xl mx-auto mb-20 animate-on-scroll"><img src="image/flower.png" alt="Flower" class="w-24 h-auto mx-auto mb-8"><h2 class="font-playfair text-5xl text-[var(--text-secondary)] mb-10">On Behalf Of</h2><div class="bg-white/80 rounded-2xl shadow-lg p-8 mt-12"><p class="mb-2">นางสาวเพ็ญทิพย์ ขาวสนิท<br>นางสุวิมล ศรมณี<br>มีความยินดีขอเรียนเชิญเพื่อเป็นเกียรติ เนื่องในพิธีมงคลสมรสระหว่าง</p><div class="flex flex-col md:flex-row justify-around items-center text-center mt-6"><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ขวัญชนก แก้วแสง (ริบบิ้น)</p><p class="text-xl font-playfair text-gray-500 mt-1">Kwanchanok Kaewsaeng (Ribbin)</p></div><div class="font-playfair text-4xl my-4 md:my-0 text-[var(--accent-primary)]">&</div><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ร้อยโท สมรภูมิ ศรมณี (ปืน)</p><p class="text-xl font-playfair text-gray-500 mt-1">Lt. Samorrapoom Sornmanee (Puen)</p></div></div></div></section>
+        <section id="on-behalf-of" class="text-center max-w-4xl mx-auto mb-20 animate-on-scroll"><img src="image/flower.png" alt="Flower Decoration" class="w-24 h-auto mx-auto mb-8"><h2 class="font-playfair text-5xl text-[var(--text-secondary)] mb-10">On Behalf Of</h2><div class="bg-white/80 rounded-2xl shadow-lg p-8 mt-12"><p class="mb-2">นางสาวเพ็ญทิพย์ ขาวสนิท<br>นางสุวิมล ศรมณี<br>มีความยินดีขอเรียนเชิญเพื่อเป็นเกียรติ เนื่องในพิธีมงคลสมรสระหว่าง</p><div class="flex flex-col md:flex-row justify-around items-center text-center mt-6"><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ขวัญชนก แก้วแสง (ริบบิ้น)</p><p class="text-xl font-playfair text-gray-500 mt-1">Kwanchanok Kaewsaeng (Ribbin)</p></div><div class="font-playfair text-4xl my-4 md:my-0 text-[var(--accent-primary)]">&</div><div><p class="text-3xl font-maitree text-[var(--text-primary)]">ร้อยโท สมรภูมิ ศรมณี (ปืน)</p><p class="text-xl font-playfair text-gray-500 mt-1">Lt. Samorrapoom Sornmanee (Puen)</p></div></div></div></section>
         
         <section id="countdown" class="relative text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-8">นับถอยหลังสู่วันสำคัญ</h2><div id="countdown-timer" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-[var(--text-primary)]"><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="days" class="text-5xl font-bold">0</p><p class="text-lg">วัน</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="hours" class="text-5xl font-bold">0</p><p class="text-lg">ชั่วโมง</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="minutes" class="text-5xl font-bold">0</p><p class="text-lg">นาที</p></div><div class="bg-white/70 p-6 rounded-lg shadow-md"><p id="seconds" class="text-5xl font-bold">0</p><p class="text-lg">วินาที</p></div></div></section>
 
@@ -112,28 +125,28 @@
             <div class="max-w-5xl mx-auto bg-white/90 shadow-2xl rounded-2xl p-8 md:p-12">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center mb-12">
                     <div class="flex flex-col items-center">
-                        <img src="image/icon1-final.png" alt="ไอคอนแห่ขันหมาก" class="w-12.5 h-12.5 mb-2">
+                        <img src="image/icon1-final.png" alt="Khan Maak Procession Icon" class="w-12 h-12 mb-2">
                         <div class="flex flex-col justify-center flex-grow">
                             <p class="text-xl font-semibold text-[var(--text-primary)]">09.09 น.</p>
                             <p>พิธีแห่ขันหมาก</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <img src="image/icon2-final.png" alt="ไอคอนรดน้ำสังข์" class="w-12.5 h-12.5 mb-2">
+                        <img src="image/icon2-final.png" alt="Water Pouring Ceremony Icon" class="w-12 h-12 mb-2">
                         <div class="flex flex-col justify-center flex-grow">
                             <p class="text-xl font-semibold text-[var(--text-primary)]">11.09 น.</p>
                             <p>พิธีรดน้ำสังข์</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <img src="image/icon3-final.png" alt="ไอคอนมงคลสมรส" class="w-12.5 h-12.5 mb-2">
+                        <img src="image/icon3-final.png" alt="Wedding Reception Icon" class="w-12 h-12 mb-2">
                         <div class="flex flex-col justify-center flex-grow">
                             <p class="text-xl font-semibold text-[var(--text-primary)]">18.00 น.</p>
                             <p>ฉลองมงคลสมรส</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <img src="image/icon4-final.png" alt="ไอคอน After Party" class="w-12.5 h-12.5 mb-2">
+                        <img src="image/icon4-final.png" alt="After Party Icon" class="w-12 h-12 mb-2">
                         <div class="flex flex-col justify-center flex-grow">
                             <p class="text-xl font-semibold text-[var(--text-primary)]">22.00 น.</p>
                             <p>After Party</p>
@@ -159,21 +172,63 @@
                     <div class="rounded-lg overflow-hidden shadow-md my-4">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17905.528989392376!2d99.9676404140798!3d8.398886494454853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3053014602b1ba17%3A0x2c442d44d12b50f3!2sThe%20Twin%20Lotus%20Hotel!5e1!3m2!1sen!2sth!4v1757000372468!5m2!1sen!2sth" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <a href="https://maps.app.goo.gl/ZVdDCUUgMugza4BJ8" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full" target="_blank">ดูแผนที่</a>
+                    <a href="https://maps.app.goo.gl/ZVdDCUUgMugza4BJ8" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full" target="_blank" rel="noopener noreferrer">ดูแผนที่</a>
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-12">Gallery of memories</h2><div class="grid grid-cols-2 md:grid-cols-5 gap-4"><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G1.jpg" alt="ภาพ 1" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G2.jpg" alt="ภาพ 2" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G3.jpg" alt="ภาพ 3" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G4.jpg" alt="ภาพ 4" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G5.jpg" alt="ภาพ 5" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G6.jpg" alt="ภาพ 6" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G7.jpg" alt="ภาพ 7" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G8.jpg" alt="ภาพ 8" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G9.jpg" alt="ภาพ 9" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G10.jpg" alt="ภาพ 10" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)"></div></div><div class="text-center mt-12 max-w-3xl mx-auto"><p class="text-lg italic text-gray-600 font-playfair">"Thank you for being an important part of our story..."</p></div></section>
+        <section id="gallery" class="text-center mb-20 animate-on-scroll"><h2 class="section-title text-4xl md:text-5xl mb-12">Gallery of memories</h2><div class="grid grid-cols-2 md:grid-cols-5 gap-4"><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G1.jpg" alt="Gallery image 1 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G2.jpg" alt="Gallery image 2 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G3.jpg" alt="Gallery image 3 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G4.jpg" alt="Gallery image 4 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G5.jpg" alt="Gallery image 5 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G6.jpg" alt="Gallery image 6 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G7.jpg" alt="Gallery image 7 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G8.jpg" alt="Gallery image 8 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G9.jpg" alt="Gallery image 9 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div><div class="overflow-hidden rounded-lg shadow-md cursor-pointer"><img src="image/IMG_G10.jpg" alt="Gallery image 10 of Ribbin and Puen" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)" loading="lazy" decoding="async"></div></div><div class="text-center mt-12 max-w-3xl mx-auto"><p class="text-lg italic text-gray-600 font-playfair">"Thank you for being an important part of our story..."</p></div></section>
 
-        <section id="moments" class="text-center mb-20 animate-on-scroll"><div class="swiper mySwiper max-w-6xl mx-auto"><div class="swiper-wrapper"><div class="swiper-slide"><img src="image/IMG_X1.jpg" alt="ภาพครอบครัว" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X2.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X3.jpg" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X4.jpg" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X5.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X6.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div><div class="swiper-slide"><img src="image/IMG_X7.jpg"" alt="ภาพครอบครัว"" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]"></div></div><div class="swiper-pagination mt-8"></div></div></section>
+        <section id="moments" class="text-center mb-20 animate-on-scroll">
+            <h2 class="section-title text-4xl md:text-5xl mb-12">Our Moments</h2>
+            <div class="swiper mySwiper max-w-6xl mx-auto">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <picture>
+                           <img src="image/IMG_X1.jpg" alt="Moment 1" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                           <img src="image/IMG_X2.jpg" alt="Moment 2" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                           <img src="image/IMG_X3.jpg" alt="Moment 3" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                           <img src="image/IMG_X4.jpg" alt="Moment 4" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                           <img src="image/IMG_X5.jpg" alt="Moment 5" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>   
+                           <img src="image/IMG_X6.jpg" alt="Moment 6" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                           <img src="image/IMG_X7.jpg" alt="Moment 7" class="w-full h-auto object-contain rounded-lg shadow-md max-h-[600px]" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-8"></div>
+            </div>
+        </section>
 
         <section id="rsvp" class="relative text-center max-w-3xl mx-auto mb-20 animate-on-scroll">
             <h2 class="section-title text-4xl md:text-5xl mb-4">RSVP</h2>
             <p class="text-lg leading-relaxed mb-8">การตอบรับของท่านมีความสำคัญอย่างยิ่งในการช่วยเราเตรียมงานให้พร้อมสำหรับการเฉลิมฉลองอันน่าจดจำนี้</p>
             <form id="rsvp-form" data-formtype="rsvp" class="bg-white p-8 rounded-lg shadow-lg text-left" novalidate>
                 <div class="mb-6">
-                    <p class="block font-medium mb-3">สถานะการเข้าร่วม</p>
+                    <p class="block font-medium mb-3">สถานะการเข้าร่วม <span class="text-red-500">*</span></p>
                     <div class="flex gap-6">
                         <label class="flex items-center cursor-pointer"><input type="radio" name="attendance" value="attending" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]" checked onchange="toggleRsvpDetails(true)"> เข้าร่วมงาน</label>
                         <label class="flex items-center cursor-pointer"><input type="radio" name="attendance" value="not_attending" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]" onchange="toggleRsvpDetails(false)"> ไม่สามารถเข้าร่วมได้</label>
@@ -181,15 +236,15 @@
                 </div>
                 
                 <div id="rsvp-details">
-                    <div class="mb-4"><label for="name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
-                    <div class="mb-4"><label for="guest-count" class="block font-medium mb-2">จำนวนแขก (รวมคุณด้วย)</label><input type="number" id="guest-count" min="1" value="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required></div>
-                    <div class="mb-4"><p class="block font-medium mb-2">ท่านเป็นแขกฝั่ง</p><div class="flex gap-6"><label class="flex items-center"><input type="radio" name="guest-side" value="groom" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าบ่าว</label><label class="flex items-center"><input type="radio" name="guest-side" value="bride" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าสาว</label></div></div>
-                    <div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว</label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น ญาติ"></div>
+                    <div class="mb-4"><label for="name" class="block font-medium mb-2">ชื่อ - นามสกุล <span class="text-red-500">*</span></label><input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
+                    <div class="mb-4"><label for="guest-count" class="block font-medium mb-2">จำนวนแขก (รวมคุณด้วย) <span class="text-red-500">*</span></label><input type="number" id="guest-count" min="1" value="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required></div>
+                    <div class="mb-4"><p class="block font-medium mb-2">ท่านเป็นแขกฝั่ง <span class="text-red-500">*</span></p><div class="flex gap-6"><label class="flex items-center"><input type="radio" name="guest-side" value="groom" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]" required>เจ้าบ่าว</label><label class="flex items-center"><input type="radio" name="guest-side" value="bride" class="mr-2 h-4 w-4 text-[var(--text-primary)] focus:ring-[var(--text-primary)]">เจ้าสาว</label></div></div>
+                    <div class="mb-6"><label for="relationship" class="block font-medium mb-2">ความสัมพันธ์กับคู่บ่าวสาว <span class="text-red-500">*</span></label><input type="text" id="relationship" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุความสัมพันธ์กับคู่บ่าวสาว" required></div>
                 </div>
 
                 <div id="not-attending-details" style="display: none;">
-                    <div class="mb-4"><label for="not-attending-name" class="block font-medium mb-2">ชื่อ - นามสกุล</label><input type="text" id="not-attending-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
-                    <div class="mb-6"><label for="not-attending-reason" class="block font-medium mb-2">ฝากข้อความถึงคู่บ่าวสาว (ไม่บังคับ)</label><textarea id="not-attending-reason" name="not-attending-reason" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="ขออวยพรให้ทั้งคู่มีความสุข..."></textarea></div>
+                    <div class="mb-4"><label for="not-attending-name" class="block font-medium mb-2">ชื่อ - นามสกุล <span class="text-red-500">*</span></label><input type="text" id="not-attending-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
+                    <div class="mb-6"><label for="not-attending-reason" class="block font-medium mb-2">ข้อความถึงคู่บ่าวสาว (ไม่บังคับ)</label><textarea id="not-attending-reason" name="not-attending-reason" rows="4" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรอกข้อความอวยพรที่นี่..."></textarea></div>
                 </div>
 
                 <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full mt-2">ยืนยันการเข้าร่วม</button>
@@ -204,8 +259,8 @@
                     <h3 class="text-3xl font-maitree text-[var(--text-secondary)] mb-4">Memorable Notes</h3>
                     <p class="text-lg leading-relaxed mb-8">ทุกคำอวยพรและความทรงจำจากท่านมีความหมายกับเรามาก ร่วมกรอกข้อความเพื่อเป็นส่วนหนึ่งในหน้าแรกของบันทึกการเดินทางของเรา</p>
                     <form id="wishes-form" data-formtype="wishes" class="text-left" novalidate>
-                        <div class="mb-6"><label for="note-name" class="block font-medium mb-2">ชื่อ</label><input type="text" id="note-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="เช่น ศรมณี หรือ ครอบครัวแก้วแสง" required></div>
-                        <div class="mb-6"><label for="note-message" class="block font-medium mb-2">ข้อความถึงคู่บ่าว-สาว</label><textarea id="note-message" name="note-message" rows="5" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรอกข้อความอวยพรที่นี่..." required></textarea></div>
+                        <div class="mb-6"><label for="note-name" class="block font-medium mb-2">ชื่อ - นามสกุล <span class="text-red-500">*</span></label><input type="text" id="note-name" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรุณาระบุชื่อของท่าน" required></div>
+                        <div class="mb-6"><label for="note-message" class="block font-medium mb-2">ข้อความถึงคู่บ่าวสาว <span class="text-red-500">*</span></label><textarea id="note-message" name="note-message" rows="5" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" placeholder="กรอกข้อความอวยพรที่นี่..." required></textarea></div>
                         <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full">ส่งข้อความ</button>
                     </form>
                 </div>
@@ -218,41 +273,41 @@
                     <div class="text-left space-y-2 mb-6"><p><strong>ชื่อบัญชี: ขวัญชนก แก้วแสง</strong></p></div>
                     
                     <div class="text-center my-4">
-                        <img src="image/payment-qr.jpg" alt="QR Code สำหรับโอนเงิน" class="w-50 h-100 mx-auto rounded-lg shadow-md">
+                        <img src="image/payment-qr.jpg" alt="QR Code for Bank Transfer" class="w-52 h-auto mx-auto rounded-lg shadow-md">
                         <a href="image/payment-qr.jpg" download="Witcytech.jpg" class="inline-block mt-4 btn-primary px-6 py-2 rounded-full text-sm">
                             ดาวน์โหลด QR Code
                         </a>
                     </div>
 
                     <div class="border-t border-gray-200 mt-6 pt-6">
-                        <h4 class="text-xl font-maitree text-[var(--text-secondary)] mb-4">ส่งหลักฐานการโอนเงิน</h4>
+                        <h4 class="text-xl font-maitree text-[var(--text-secondary)] mb-4">แจ้งการส่งของขวัญ</h4>
                         <form id="gift-form" data-formtype="gift" class="text-left space-y-4" novalidate>
                             <div class="space-y-2">
-                                <label for="sender-name" class="block font-medium text-sm">ชื่อผู้โอน</label>
+                                <label for="sender-name" class="block font-medium text-sm">ชื่อผู้โอน <span class="text-red-500">*</span></label>
                                 <input type="text" id="sender-name" placeholder="กรุณาระบุชื่อผู้โอน" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
                             </div>
 
                             <div class="space-y-2">
-                                <label for="gift-amount" class="block font-medium text-sm">จำนวนเงินที่โอน (บาท)</label>
-                                <input type="number" id="gift-amount" min="1" step="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
+                                <label for="gift-amount" class="block font-medium text-sm">จำนวนเงินที่โอน (บาท) <span class="text-red-500">*</span></label>
+                                <input type="number" id="gift-amount" placeholder="กรุณาระบุจำนวนเงินที่โอน" min="1" step="1" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:ring-2 focus:ring-[var(--accent-primary)] transition-all duration-200" required>
                             </div>
 
                             <div class="space-y-2">
-                                <label class="block font-medium text-sm">อัปโหลดสลิป</label>
+                                <label for="slip-upload" class="block font-medium text-sm">อัปโหลดสลิป <span class="text-red-500">*</span></label>
                                 <div id="slip-upload-area" class="relative p-4 border-2 border-dashed border-gray-300 rounded-lg text-center cursor-pointer hover:border-[var(--accent-primary)] transition-colors">
                                     <input type="file" id="slip-upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*" required>
                                     <div id="slip-prompt">
-                                        <p class="text-gray-500">แตะเพื่ออัปโหลดไฟล์</p>
+                                        <p id="upload-prompt-text" class="text-gray-500"></p>
                                     </div>
                                     <div id="slip-preview-container" class="hidden">
-                                        <img id="slip-preview-img" src="#" alt="ตัวอย่างสลิป" class="max-h-40 mx-auto rounded-md mb-2">
+                                        <img id="slip-preview-img" src="#" alt="Slip Preview" class="max-h-40 mx-auto rounded-md mb-2">
                                         <p id="slip-preview-filename" class="text-sm text-gray-700 truncate"></p>
                                         <button type="button" id="remove-slip-btn" class="mt-2 text-xs text-red-600 hover:underline">เปลี่ยนไฟล์</button>
                                     </div>
                                 </div>
                             </div>
                             
-                            <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full pt-2">ส่งหลักฐาน</button>
+                            <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full pt-2">ส่งของขวัญ</button>
                         </form>
                     </div>
                 </div>
@@ -260,11 +315,11 @@
         </section>
     </main>
     
-    <nav class="fixed bottom-0 left-0 right-0 bg-[var(--accent-primary)] text-white shadow-lg md:hidden z-50"><div class="flex justify-around items-center h-16"><a href="#" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="text-xs">หน้าแรก</span></a><a href="#on-behalf-of" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="text-xs">คำเชิญ</span></a><a href="#events" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">กำหนดการ</span></a><a href="#gallery" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">แกลเลอรี</span></a><a href="#rsvp" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span class="text-xs">ตอบรับคำเชิญ</span></a></div></nav>
+    <nav class="fixed bottom-0 left-0 right-0 bg-[var(--accent-primary)] text-white shadow-lg md:hidden z-50"><div class="flex justify-around items-center h-16"><a href="#" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors" aria-label="Go to Home"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="text-xs">หน้าแรก</span></a><a href="#on-behalf-of" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors" aria-label="Go to Invitation"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="text-xs">คำเชิญ</span></a><a href="#events" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors" aria-label="Go to Schedule"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">กำหนดการ</span></a><a href="#gallery" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors" aria-label="Go to Gallery"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">แกลเลอรี</span></a><a href="#rsvp" class="flex flex-col items-center justify-center w-full h-full hover:bg-[var(--text-secondary)] transition-colors" aria-label="Go to RSVP"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span class="text-xs">ตอบรับคำเชิญ</span></a></div></nav>
     
     <footer class="bg-[var(--text-primary)] text-white text-center p-8 mt-16">
         <div class="max-w-4xl mx-auto"><h3 class="font-great-vibes text-5xl mb-4 text-[var(--accent-primary)]">Thank You</h3><p class="text-gray-300">ขอบคุณที่มาร่วมเป็นส่วนหนึ่งในวันสำคัญของเรา</p><p class="mt-4 text-sm font-playfair">Ribbin & Puen</p>
-            <div class="border-t border-gray-600 mt-8 pt-6"><div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400"><img src="image/creator-profile.jpg" alt="Witcytech Profile" class="w-16 h-16 rounded-full border-2 border-gray-500 object-cover"><div class="text-center sm:text-left"><p class="font-semibold text-base">Witcytech — 2025</p><div class="flex justify-center sm:justify-start items-center gap-4 mt-2"><a href="https://www.instagram.com/nyxitao/" aria-label="Instagram ของผู้พัฒนา" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a><a href="https://github.com/Witcytech" aria-label="GitHub ของผู้พัฒนา" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div></div></div></div>
+            <div class="border-t border-gray-600 mt-8 pt-6"><div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400"><img src="image/creator-profile.jpg" alt="Developer Profile Picture" class="w-16 h-16 rounded-full border-2 border-gray-500 object-cover"><div class="text-center sm:text-left"><p class="font-semibold text-base">Witcytech — 2025</p><div class="flex justify-center sm:justify-start items-center gap-4 mt-2"><a href="https://www.instagram.com/nyxitao/" aria-label="Developer's Instagram Profile" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a><a href="https://github.com/Witcytech" aria-label="Developer's GitHub Profile" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div></div></div></div>
         </div>
     </footer>
 
@@ -274,15 +329,15 @@
         <div id="alertModalContent" class="mx-4 flex max-w-md flex-col items-center rounded-lg border-4 bg-white p-8 text-center shadow-2xl">
             <div id="alertIconContainer" class="mb-4"></div>
             <h2 id="alertTitle" class="mb-2 text-2xl font-bold font-maitree"></h2>
-            <p id="alertMessage" class="text-gray-700"></p>
+            <div id="alertMessage" class="text-gray-700 w-full"></div>
             <button id="alertCloseBtn" class="btn-primary mt-6 w-full rounded-full py-2 font-bold">ปิด</button>
         </div>
     </div>
     
     <div id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="confirmationModalTitle" class="fixed inset-0 z-[2006] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
         <div class="mx-4 max-w-md rounded-lg bg-white p-6 text-left shadow-2xl">
-            <h2 id="confirmationModalTitle" class="mb-4 text-xl font-bold text-[var(--text-primary)] font-maitree">โปรดตรวจสอบข้อมูล</h2>
-            <p class="mb-4 text-sm text-gray-600">กรุณาตรวจสอบว่าข้อมูลที่ท่านกรอกถูกต้องหรือไม่?</p>
+            <h2 id="confirmationModalTitle" class="mb-4 text-xl font-bold text-[var(--text-primary)] font-maitree">กรุณาตรวจสอบข้อมูล</h2>
+            <p class="mb-4 text-sm text-gray-600">กรุณาตรวจสอบข้อมูลว่าถูกต้องหรือไม่?</p>
             <div id="confirmation-summary" class="mb-6 space-y-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-800"></div>
             <div class="flex gap-4">
                 <button id="final-confirm-btn" class="w-full btn-primary rounded-full py-2 font-bold">ยืนยันและส่งข้อมูล</button>
@@ -294,14 +349,12 @@
     <div id="loadingModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[2007] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
         <div class="flex flex-col items-center rounded-lg bg-white p-8 shadow-2xl">
             <div class="loader"></div>
-            <p class="mt-4 font-medium text-gray-800">กำลังดำเนินการ...</p>
+            <p class="mt-4 font-medium text-gray-800">กำลังส่งข้อมูลไปยังเซิร์ฟเวอร์</p>
         </div>
     </div>
 
 <script>
-    // ===================================================================
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwsaJyKkXFcxND3EhH0oX2wfPPdxsWHu5fui_f1kjvo-Qp-BgI8oNw7HtckMwPX7xHZ/exec'; 
-    // ===================================================================
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwsaJyKkXFcxND3EhH0oX2wfPPdxsWHu5fui_f1kjvo-Qp-BgI8oNw7HtckMwPX7xHZ/exec';
 
     const bodyEl = document.body;
     const htmlEl = document.documentElement;
@@ -317,10 +370,9 @@
     const finalCancelBtn = document.getElementById('final-cancel-btn');
     const loadingModal = document.getElementById('loadingModal');
     const consentModal = document.getElementById('consentModal');
-    const pcBlockerModal = document.getElementById('pcBlockerModal');
     
-    let pendingFormData = null; 
-    let fileToUpload = null;    
+    let pendingFormData = null;
+    let fileToUpload = null;
 
     const icons = {
         success: `<svg class="h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
@@ -328,7 +380,7 @@
     };
 
     function updateScrollLock() {
-        const isScrollLocked = (consentModal.style.display === 'flex') || (pcBlockerModal.style.display === 'flex');
+        const isScrollLocked = consentModal.style.display === 'flex';
         bodyEl.style.overflow = isScrollLocked ? 'hidden' : '';
         htmlEl.style.overflow = isScrollLocked ? 'hidden' : '';
     }
@@ -336,7 +388,28 @@
     function showAlert(type, title, message) {
         alertIconContainer.innerHTML = icons[type];
         alertTitle.textContent = title;
-        alertMessage.textContent = message;
+
+        let finalMessageHTML = message.startsWith('<') ? message : `<p>${message}</p>`;
+
+        if (type === 'error') {
+            finalMessageHTML += `
+                <div class="border-t border-gray-200 pt-4 mt-6 text-sm text-gray-600 text-left">
+                    <p class="text-center mb-3">หากท่านเชื่อว่านี่เป็นข้อผิดพลาดของระบบ กรุณาติดต่อผู้พัฒนา</p>
+                    <div class="flex items-center justify-center gap-4">
+                        <img src="image/creator-profile.jpg" alt="Developer Profile Picture" class="w-12 h-12 rounded-full border-2 border-gray-300 object-cover">
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-800">Witcytech</p>
+                            <div class="flex items-center gap-3 mt-1">
+                                <a href="https://www.instagram.com/nyxitao/" aria-label="Developer's Instagram Profile" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C8.843 3.965 8.548 3.977 7.29 4.032c-2.711.124-3.972 1.4-4.096 4.096-.055 1.258-.066 1.553-.066 4.872s.011 3.613.066 4.872c.124 2.696 1.385 3.973 4.096 4.096 1.258.055 1.553.066 4.872.066s3.613-.011 4.872-.066c2.711-.124 3.972-1.4 4.096-4.096.055-1.258.066-1.553-.066-4.872s-.011-3.613-.066-4.872c-.124-2.697-1.385-3.973-4.096-4.096-1.258-.055-1.553-.066-4.872-.066zM12 7.297c-2.599 0-4.703 2.104-4.703 4.703s2.104 4.703 4.703 4.703 4.703-2.104 4.703-4.703-2.104-4.703-4.703-4.703zm0 7.606c-1.6 0-2.903-1.303-2.903-2.903s1.303-2.903 2.903-2.903 2.903 1.303 2.903 2.903-1.303 2.903-2.903 2.903zm4.875-7.737a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"/></svg></a>
+                                <a href="https://github.com/Witcytech" aria-label="Developer's GitHub Profile" class="text-gray-500 hover:text-gray-800 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        alertMessage.innerHTML = finalMessageHTML;
         alertModalContent.className = alertModalContent.className.replace(/border-(green|red)-400/, '');
         alertModalContent.classList.add(type === 'success' ? 'border-green-400' : 'border-red-400');
         alertModal.style.display = 'flex';
@@ -345,35 +418,26 @@
     function toggleRsvpDetails(isAttending) {
         const rsvpDetails = document.getElementById('rsvp-details');
         const notAttendingDetails = document.getElementById('not-attending-details');
-        const rsvpInputs = rsvpDetails.querySelectorAll('input, textarea');
-        const notAttendingInputs = notAttendingDetails.querySelectorAll('input, textarea');
+        
+        const requiredInputsInRsvp = ['name', 'guest-count', 'relationship'];
+        const requiredRadioInRsvp = document.querySelectorAll('input[name="guest-side"]');
+        const notAttendingNameInput = document.getElementById('not-attending-name');
 
         if (isAttending) {
             rsvpDetails.style.display = 'block';
             notAttendingDetails.style.display = 'none';
-            rsvpInputs.forEach(input => {
-                input.disabled = false;
-                if (input.type !== 'radio' || input.name === 'guest-side') {
-                    input.required = true;
-                }
-            });
-            notAttendingInputs.forEach(input => {
-                input.disabled = true;
-                input.required = false;
-            });
+            
+            requiredInputsInRsvp.forEach(id => document.getElementById(id).required = true);
+            requiredRadioInRsvp.forEach(radio => radio.required = true);
+            notAttendingNameInput.required = false;
+
         } else {
             rsvpDetails.style.display = 'none';
             notAttendingDetails.style.display = 'block';
-            rsvpInputs.forEach(input => {
-                input.disabled = true;
-                input.required = false;
-            });
-            notAttendingInputs.forEach(input => {
-                input.disabled = false;
-                 if (input.id === 'not-attending-name') {
-                    input.required = true;
-                }
-            });
+
+            requiredInputsInRsvp.forEach(id => document.getElementById(id).required = false);
+            requiredRadioInRsvp.forEach(radio => radio.required = false);
+            notAttendingNameInput.required = true;
         }
         document.querySelector('#rsvp-form button[type="submit"]').textContent = isAttending ? 'ยืนยันการเข้าร่วม' : 'ส่งการตอบรับ';
     }
@@ -410,7 +474,7 @@
             await fetch(WEB_APP_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                headers: { 'Content-Type': 'text/plain;charset=utf8' },
                 body: JSON.stringify(data)
             });
         } catch (error) {
@@ -421,10 +485,51 @@
     function handleFormSubmit(event) {
         event.preventDefault();
         const form = event.target;
+
         if (!form.checkValidity()) {
-            showAlert('error', 'เกิดข้อผิดพลาด', 'กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง');
+            const requiredInputs = form.querySelectorAll('[required]');
+            const missingFieldLabels = [];
+
+            const fieldNameMap = {
+                'name': 'ชื่อ - นามสกุล',
+                'guest-count': 'จำนวนแขก',
+                'relationship': 'ความสัมพันธ์กับคู่บ่าวสาว',
+                'guest-side': 'ท่านเป็นแขกฝั่ง',
+                'not-attending-name': 'ชื่อ - นามสกุล',
+                'note-name': 'ชื่อ - นามสกุล',
+                'note-message': 'ข้อความถึงคู่บ่าวสาว',
+                'sender-name': 'ชื่อผู้โอน',
+                'gift-amount': 'จำนวนเงินที่โอน',
+                'slip-upload': 'อัปโหลดสลิป'
+            };
+
+            requiredInputs.forEach(input => {
+                if (!input.validity.valid) {
+                    let labelText = '';
+                    if (input.type === 'radio') {
+                        labelText = fieldNameMap[input.name];
+                    } else {
+                        labelText = fieldNameMap[input.id];
+                    }
+                    if (labelText && !missingFieldLabels.includes(labelText)) {
+                        missingFieldLabels.push(labelText);
+                    }
+                }
+            });
+
+            if (missingFieldLabels.length > 0) {
+                let errorMessage = 'กรุณาดำเนินการในส่วนต่อไปนี้ให้ครบถ้วน:<ul class="list-disc list-inside text-left mt-2">';
+                missingFieldLabels.forEach(label => {
+                    errorMessage += `<li>${label}</li>`;
+                });
+                errorMessage += '</ul>';
+                showAlert('error', 'ข้อมูลไม่ครบถ้วน', errorMessage);
+            } else {
+                showAlert('error', 'เกิดข้อผิดพลาด', 'กรุณาตรวจสอบข้อมูลและลองใหม่อีกครั้ง');
+            }
             return;
         }
+
         pendingFormData = { form, data: { formType: form.dataset.formtype } };
         let summaryHtml = '';
         try {
@@ -466,8 +571,8 @@
     async function sendDataToBackend() {
         if (!pendingFormData) return;
         confirmationModal.style.display = 'none';
-        if (!WEB_APP_URL || WEB_APP_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
-            showAlert('error', 'เกิดข้อผิดพลาด', 'กรุณาตั้งค่า WEB_APP_URL ในไฟล์ HTML ก่อนใช้งานฟอร์ม');
+        if (!WEB_APP_URL || WEB_APP_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
+            showAlert('error', 'เกิดข้อผิดพลาด', 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้ในขณะนี้');
             return;
         }
         loadingModal.style.display = 'flex';
@@ -527,12 +632,6 @@
             trackVisit();
             updateScrollLock(); 
         });
-        
-        const checkDevice = () => {
-            const isDevMode = new URLSearchParams(window.location.search).get('dev') === 'true';
-            pcBlockerModal.style.display = (!isDevMode && window.innerWidth >= 1024) ? 'flex' : 'none';
-            updateScrollLock();
-        };
         
         const startCountdown = () => {
             const weddingDate = new Date("Oct 17, 2025 09:09:00").getTime();
@@ -606,13 +705,21 @@
             slipUploadArea.classList.add('border-gray-300');
         });
         
+        const uploadPrompt = document.getElementById('upload-prompt-text');
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        if (uploadPrompt) {
+            uploadPrompt.textContent = isTouchDevice ? 'แตะเพื่ออัปโหลดไฟล์' : 'คลิกหรือลากไฟล์มาวางเพื่ออัปโหลด';
+        }
+
         new Swiper(".mySwiper", { 
-            slidesPerView: 1, spaceBetween: 30, loop: true, centeredSlides: true, 
+            slidesPerView: 1, 
+            spaceBetween: 30, 
+            loop: true, 
+            centeredSlides: true, 
             autoplay: { delay: 3500, disableOnInteraction: false }, 
             pagination: { el: ".swiper-pagination", clickable: true } 
         });
-        checkDevice();
-        window.addEventListener('resize', checkDevice);
+        
         startCountdown();
         toggleRsvpDetails(true); 
     });
@@ -623,7 +730,7 @@
         document.getElementById("modalImage").src = src; 
     }
     function closeModal() { 
-        imageModal.style.display = "none"; 
+        imageModal.style.display = "none";
     }
 </script>
 </body>
