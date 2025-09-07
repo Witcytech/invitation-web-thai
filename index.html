@@ -336,7 +336,7 @@
     
     <div id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="confirmationModalTitle" class="fixed inset-0 z-[2006] hidden items-center justify-center bg-gray-900/60 backdrop-blur-sm">
         <div class="mx-4 max-w-md rounded-lg bg-white p-6 text-left shadow-2xl">
-            <h2 id="confirmationModalTitle" class="mb-4 text-xl font-bold text-[var(--text-primary)] font-maitree">กรุณาตรวจสอบข้อมูล</h2>
+            <h2 id="confirmationModalTitle" class="mb-4 text-xl font-bold text-[var(--text-primary)] font-maitree">ตรวจสอบข้อมูล</h2>
             <p class="mb-4 text-sm text-gray-600">กรุณาตรวจสอบข้อมูลว่าถูกต้องหรือไม่?</p>
             <div id="confirmation-summary" class="mb-6 space-y-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-800"></div>
             <div class="flex gap-4">
@@ -518,7 +518,7 @@
             });
 
             if (missingFieldLabels.length > 0) {
-                let errorMessage = 'กรุณาดำเนินการในส่วนต่อไปนี้ให้ครบถ้วน:<ul class="list-disc list-inside text-left mt-2">';
+                let errorMessage = 'กรุณาดำเนินการในส่วนต่อไปนี้ให้ครบถ้วน<ul class="list-disc list-inside text-left mt-2">';
                 missingFieldLabels.forEach(label => {
                     errorMessage += `<li>${label}</li>`;
                 });
@@ -735,3 +735,4 @@
 </script>
 </body>
 </html>
+
