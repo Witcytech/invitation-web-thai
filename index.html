@@ -219,7 +219,12 @@
             </div>
         </section>
 
-        <section id="rsvp" class="relative text-center max-w-3xl mx-auto mb-20 animate-on-scroll">
+        <!-- ========== RSVP Section (Modified) ========== -->
+        <section id="rsvp" class="relative text-center max-w-3xl mx-auto mb-20 animate-on-scroll" style="position: relative; filter: blur(8px); transform: scale(1.05); pointer-events: none; opacity: 0.6;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; background-color: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.3); color: var(--text-primary); pointer-events: auto;">
+                <h3 class="text-3xl font-pridi" style="font-weight: bold;">ปิดรับการลงทะเบียนแล้ว</h3>
+                <p class="mt-2 text-lg">ขอขอบคุณทุกท่านที่ตอบรับคำเชิญ</p>
+            </div>
             <h2 class="section-title text-4xl md:text-5xl mb-4">RSVP</h2>
             <p class="text-lg leading-relaxed mb-8">การตอบรับของท่านมีความสำคัญอย่างยิ่งในการช่วยเราเตรียมงานให้พร้อมสำหรับการเฉลิมฉลองอันน่าจดจำนี้</p>
             <form id="rsvp-form" data-formtype="rsvp" class="bg-white p-8 rounded-lg shadow-lg text-left" novalidate>
@@ -247,7 +252,12 @@
             </form>
         </section>
 
-        <section id="wishes-and-gifts" class="relative text-center max-w-3xl mx-auto animate-on-scroll">
+        <!-- ========== Wishes & Gifts Section (Modified) ========== -->
+        <section id="wishes-and-gifts" class="relative text-center max-w-3xl mx-auto animate-on-scroll" style="position: relative; filter: blur(8px); transform: scale(1.05); pointer-events: none; opacity: 0.6;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; background-color: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.3); color: var(--text-primary); pointer-events: auto;">
+                <h3 class="text-3xl font-pridi" style="font-weight: bold;">ปิดรับคำอวยพรและของขวัญ</h3>
+                <p class="mt-2 text-lg">ขอขอบคุณสำหรับความปรารถนาดีจากทุกท่าน</p>
+            </div>
             <h2 class="section-title text-4xl md:text-5xl mb-8">Wishes & Gifts</h2>
             <div class="bg-white/90 p-8 rounded-2xl shadow-2xl space-y-10">
                 
@@ -773,4 +783,3 @@
 </script>
 </body>
 </html>
-
